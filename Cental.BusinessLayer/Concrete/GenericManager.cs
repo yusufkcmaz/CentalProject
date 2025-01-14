@@ -24,22 +24,22 @@ namespace Cental.BusinessLayer.Concrete
 
         public void TDelete(int id)
         {
-            throw new NotImplementedException();
+            _genericDal.Delete(id);
         }
 
         public List<T> TGetAll()
         {
-            throw new NotImplementedException();
+            return _genericDal.GetAll();    
         }
 
         public T TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _genericDal.GetById(id);
         }
 
         public void TUpdate(T entity)
         {
-            throw new NotImplementedException();
+            _genericDal.Update(entity);
         }
     }
 }

@@ -1,0 +1,36 @@
+﻿@model List<About>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Hakkımızda alanı </h3>
+<table class="table table-bordered">
+
+    <tr>
+        <th>#</th>
+        <th>vizyon</th>
+        <th>misyon</th>
+        <th>1.açıklam</th>
+        <th>2.açıklam</th>
+        <th>Başlama yılı</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.AboutId</td>
+            <td>@item.Vision</td>
+            <td>@item.Mission</td>
+            <td>@item.Description1</td>
+            <td>@item.Description2</td>
+            <td>@item.StartYear</td>
+            
+
+
+
+        </tr>
+    }
+
+
+
+</table>
