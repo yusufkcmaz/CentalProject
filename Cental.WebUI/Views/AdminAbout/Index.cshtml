@@ -10,9 +10,10 @@
         <th>#</th>
         <th>vizyon</th>
         <th>misyon</th>
-        <th>1.açıklam</th>
-        <th>2.açıklam</th>
-        <th>Başlama yılı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        
+       
 
     </tr>
     @foreach (var item in Model)
@@ -21,16 +22,10 @@
             <td>@item.AboutId</td>
             <td>@item.Vision</td>
             <td>@item.Mission</td>
-            <td>@item.Description1</td>
-            <td>@item.Description2</td>
-            <td>@item.StartYear</td>
-            
-
-
-
+            <td><a asp-action="DeleteAbout" asp-route-id="@item.AboutId" class="btn btn-danger">siL</a> </td>
+           
         </tr>
     }
 
-
-
 </table>
+<a asp-action="CreateAbout" asp-controller="AdminAbout" class="btn btn-primary">Yeni hakkımızda ekle</a>
