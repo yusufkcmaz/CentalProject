@@ -12,7 +12,7 @@ namespace Cental.DataAccessLayer.Concrete
 {
     //INTERFACEDEN(IABOUTDAL) MIRAS ALACAKTIR.
 
-    public class EfAboutDal : GenericRepository<About> , IAboutDal
+    public class EfAboutDal : GenericRepository<About>, IAboutDal
     {
         public EfAboutDal(CentalContext context) : base(context)
         {

@@ -5,6 +5,7 @@ using Cental.DataAccessLayer.Concrete;
 using Cental.DataAccessLayer.Context;
 using Cental.DataAccessLayer.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +13,25 @@ var builder = WebApplication.CreateBuilder(args);
 
 //About Service gördüðün zaman aboutmanager sýnýfýndan bir nesne örneði al ve iþlemi onunla yap.
 builder.Services.AddDbContext<CentalContext>();
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+
+//
 builder.Services.AddScoped<IAboutService,AboutManager>();
 builder.Services.AddScoped<IAboutDal, EfAboutDal>();
+//
+builder.Services.AddScoped<IBannerService, BannerManager>();
+builder.Services.AddScoped<IBannerDal, EfBannerDal>();
+//
+builder.Services.AddScoped<ICarBrandService, CarBrandManager>();
+builder.Services.AddScoped<ICarBrandDal, EfCarBrandDal>();
+//
+
+
+
+
+
 builder.Services.AddScoped(typeof (IGenericDal<>),typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof (IGenericService<>),typeof(GenericManager<>));
 //

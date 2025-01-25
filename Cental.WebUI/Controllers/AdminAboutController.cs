@@ -17,6 +17,7 @@ namespace Cental.WebUI.Controllers
 
         public IActionResult Index()
         {
+            //Result Class
             var values  = _aboutService.TGetAll();
             var result = values.Select(about => new ResultAboutDto
             {
@@ -72,12 +73,30 @@ namespace Cental.WebUI.Controllers
 
         public IActionResult UpdateAbout(int id)
         {
-            var value = _aboutService.TGetById(id);
-            return View(value);
+            var updateAboutDto = _aboutService.TGetById(id);
+            var about = new UpdateAboutDto
+            {
+                AboutId = updateAboutDto.AboutId,
+                Description1 = updateAboutDto.Description1,
+                Description2 = updateAboutDto.Description2,
+                ImageUrl1 = updateAboutDto.ImageUrl1,
+                ImageUrl2 = updateAboutDto.ImageUrl2,
+                İtem1 = updateAboutDto.İtem1,
+                İtem2 = updateAboutDto.İtem2,
+                İtem3 = updateAboutDto.İtem3,
+                İtem4 = updateAboutDto.İtem4,
+                JobTitle = updateAboutDto.JobTitle,
+                Mission = updateAboutDto.Mission,
+                NameSurname = updateAboutDto.NameSurname,
+                ProfilePicture = updateAboutDto.ProfilePicture,
+                StartYear = updateAboutDto.StartYear,
+                Vision = updateAboutDto.Vision,
+            };
+            return View(about);
         }
 
         [HttpPost]
-
+        //Guncelleme Islemı.
         public IActionResult UpdateAbout(UpdateAboutDto updateAboutDto)
         {
             var about = new About
@@ -90,6 +109,7 @@ namespace Cental.WebUI.Controllers
                 İtem1 = updateAboutDto.İtem1,
                 İtem2 = updateAboutDto.İtem2,
                 İtem3 = updateAboutDto.İtem3,
+                İtem4 = updateAboutDto.İtem4,
                 JobTitle = updateAboutDto.JobTitle, 
                 Mission = updateAboutDto.Mission,
                 NameSurname = updateAboutDto.NameSurname,
