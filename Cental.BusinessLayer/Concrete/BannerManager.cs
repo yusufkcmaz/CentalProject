@@ -9,10 +9,40 @@ using System.Threading.Tasks;
 
 namespace Cental.BusinessLayer.Concrete
 {
-    public class BannerManager : GenericManager<Banner>, IBannerService
+    public class BannerManager : IBannerService
     {
-        public BannerManager(IGenericDal<Banner> genericDal) : base(genericDal)
+        //Data accss metodlara Erişim. 
+        private readonly IBannerDal _bannerDal;
+
+        public BannerManager(IBannerDal bannerDal)
         {
+            _bannerDal = bannerDal;
+        }
+
+        public void TCreate(Banner entity)
+        {
+            _bannerDal.Create(entity);
+        }
+
+        public void TDelete(int id)
+        {
+           _bannerDal.Delete(id);
+        }
+
+        public List<Banner> TGetAll()
+        {
+            return _bannerDal.GetAll(); 
+        }
+
+        public Banner TGetById(int id)
+        {
+             return _bannerDal.GetById(id);
+
+        }
+
+        public void TUpdate(Banner entity)
+        {
+            _bannerDal.Update(entity);
         }
     }
 }

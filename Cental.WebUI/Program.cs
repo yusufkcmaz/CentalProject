@@ -17,26 +17,20 @@ builder.Services.AddDbContext<CentalContext>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 
-//
+builder.Services.AddScoped<IAboutDal, EfAboutDal>(); //Interface'i --> EfaboutDal'da implement ettik.
 builder.Services.AddScoped<IAboutService,AboutManager>();
-builder.Services.AddScoped<IAboutDal, EfAboutDal>();
-//
-builder.Services.AddScoped<IBannerService, BannerManager>();
+
 builder.Services.AddScoped<IBannerDal, EfBannerDal>();
-//
-builder.Services.AddScoped<ICarBrandService, CarBrandManager>();
+builder.Services.AddScoped<IBannerService, BannerManager>();
+
 builder.Services.AddScoped<ICarBrandDal, EfCarBrandDal>();
-//
+builder.Services.AddScoped<ICarBrandService, CarBrandManager>();
 
 
 
-
-
-builder.Services.AddScoped(typeof (IGenericDal<>),typeof(GenericRepository<>));
-builder.Services.AddScoped(typeof (IGenericService<>),typeof(GenericManager<>));
-//
 
 builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 

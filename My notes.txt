@@ -1,0 +1,14 @@
+
+| N-Katmanlý Mimari :-:
+-/-/-
+
+* Katmanlar --> Class libary trafýndan oluþturulmalý.
+* webUI --> Web App oluþturuldu.
+----
+* private : Sadece bulunan sýnýftan eriþilir.
+* protected : Sadece bulunan sýnýf ve miras alýnan sýnýflar eriþir.
+* internal : Bulunduðu katmandan eriþir .
+----
+Abstract : Ýnterfaceler bulunur.
+concreate : Ýnterfacelri implament ettiðimiz sýnýflar bulunur.
+----

@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 namespace Cental.BusinessLayer.Abstract
 {
     //Icerısını concrete doldurulacak 
+
     public interface IAboutService : IGenericService<About>
     {
-
-
 
     }
 }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Cental.BusinessLayer.Concrete
 {
+    //GenericManager : Crud işlemlerini IgenericDal üzerinden yapar
     public class GenericManager<T> : IGenericService<T> where T : class
     {
         private readonly IGenericDal<T> _genericDal;

@@ -9,10 +9,38 @@ using System.Threading.Tasks;
 
 namespace Cental.BusinessLayer.Concrete
 {
-    public class CarBrandManager : GenericManager<CarBrand>, ICarBrandService
+    public class CarBrandManager : ICarBrandService
     {
-        public CarBrandManager(IGenericDal<CarBrand> genericDal) : base(genericDal)
+        private readonly ICarBrandDal _carBrandDal;
+
+        public CarBrandManager(ICarBrandDal carBrandDal)
         {
+             _carBrandDal = carBrandDal;
+        }
+
+        public void TCreate(CarBrand entity)
+        {
+            _carBrandDal.Create(entity);    
+        }
+
+        public void TDelete(int id)
+        {
+            _carBrandDal .Delete(id);
+        }
+
+        public List<CarBrand> TGetAll()
+        {
+            return _carBrandDal.GetAll();   
+        }
+
+        public CarBrand TGetById(int id)
+        {
+            return _carBrandDal.GetById(id);
+        }
+
+        public void TUpdate(CarBrand entity)
+        {
+            _carBrandDal.Update(entity);
         }
     }
 }

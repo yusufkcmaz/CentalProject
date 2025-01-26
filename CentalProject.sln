@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cental.EntityLayer", "Cental.EntityLayer\Cental.EntityLayer.csproj", "{1D52EC76-807B-40B5-A57F-B1B9F33FD895}"
 EndProject
@@ -12,6 +12,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cental.DtoLayer", "Cental.DtoLayer\Cental.DtoLayer.csproj", "{47AFCBAB-315D-4B1A-9CDA-4F915D6AF652}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cental.WebUI", "Cental.WebUI\Cental.WebUI.csproj", "{E74DB6E0-5E1E-4F86-88C6-7188551D3D3F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{05140D9C-5769-4234-A0A7-A4587D6FE173}"
+	ProjectSection(SolutionItems) = preProject
+		My notes.txt = My notes.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
