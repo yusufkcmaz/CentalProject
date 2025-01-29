@@ -9,9 +9,9 @@ namespace Cental.EntityLayer.Entities
     public class CarBrand
     {
         public int CarBrandId { get; set; }
-        public string BrandName { get; set; }
+        public string? BrandName { get; set; }
 
-        public List<Car> Cars { get; set; }
+        public List<Car>? Cars { get; set; }
 
 
     }

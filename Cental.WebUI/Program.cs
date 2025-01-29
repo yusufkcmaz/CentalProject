@@ -1,9 +1,12 @@
 using Cental.BusinessLayer.Abstract;
 using Cental.BusinessLayer.Concrete;
+using Cental.BusinessLayer.Validations;
 using Cental.DataAccessLayer.Abstract;
 using Cental.DataAccessLayer.Concrete;
 using Cental.DataAccessLayer.Context;
 using Cental.DataAccessLayer.Repositories;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -25,8 +28,10 @@ builder.Services.AddScoped<IBannerService, BannerManager>();
 
 builder.Services.AddScoped<ICarBrandDal, EfCarBrandDal>();
 builder.Services.AddScoped<ICarBrandService, CarBrandManager>();
-
-
+//
+builder.Services.AddFluentValidationAutoValidation()
+    .AddFluentValidationClientsideAdapters()
+    .AddValidatorsFromAssemblyContaining<BrandValidator>();
 
 
 builder.Services.AddControllersWithViews();
