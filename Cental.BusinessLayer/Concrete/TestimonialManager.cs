@@ -12,10 +12,13 @@ namespace Cental.BusinessLayer.Concrete
     public class TestimonialManager : ITestimonialService
     {
         private readonly ITestimonialDal _testimonialDal;
+
         public TestimonialManager(ITestimonialDal testimonialDal)
         {
             _testimonialDal = testimonialDal;
         }
+
+      
 
         public void TCreate(Testimonial entity)
         {

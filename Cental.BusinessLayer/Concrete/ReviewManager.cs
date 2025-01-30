@@ -10,31 +10,34 @@ using System.Threading.Tasks;
 
 namespace Cental.BusinessLayer.Concrete
 {
-    internal class ReviewManager(IReviewDal _reviewDal) : IReviewDal
+    public class ReviewManager(IReviewDal _reviewDal) : IReviewService
     {
-        public void Create(Review entity)
+       
+        public void TCreate(Review entity)
         {
-            _reviewDal.Create(entity);  
+            _reviewDal.Create(entity);
         }
 
-        public void Delete(int id)
+        public void TDelete(int id)
         {
             _reviewDal.Delete(id);
         }
 
-        public List<Review> GetAll()
+        public List<Review> TGetAll()
         {
-            return _reviewDal.GetAll(); 
+            return _reviewDal.GetAll();
         }
 
-        public Review GetById(int id)
+        public Review TGetById(int id)
         {
             return _reviewDal.GetById(id);
         }
 
-        public void Update(Review entity)
+        public void TUpdate(Review entity)
         {
-            _reviewDal.Update(entity);  
+            _reviewDal.Update(entity);
         }
+
+       
     }
 }

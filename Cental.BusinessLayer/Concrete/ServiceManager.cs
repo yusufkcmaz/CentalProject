@@ -1,4 +1,5 @@
-﻿using Cental.DataAccessLayer.Abstract;
+﻿using Cental.BusinessLayer.Abstract;
+using Cental.DataAccessLayer.Abstract;
 using Cental.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Cental.BusinessLayer.Concrete
 {
-    public class ServiceManager : IServiceDal
+    public class ServiceManager : IServiceService
     {
         private readonly IServiceDal _serviceDal;
 
@@ -37,9 +38,6 @@ namespace Cental.BusinessLayer.Concrete
             return _serviceDal.GetById(id);
         }
 
-        public void Update(Service entity)
-        {
-            _serviceDal.Update(entity);
-        }
+       
     }
 }

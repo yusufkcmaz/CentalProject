@@ -34,5 +34,5 @@ namespace Cental.BusinessLayer.Validations
                WithMessage("Koltuk Sayısı Boş Geçilemez");
         }
     }
-    }
-}
+    
+} 
