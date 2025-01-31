@@ -12,3 +12,5 @@
 Abstract : Ýnterfaceler bulunur.
 concreate : Ýnterfacelri implament ettiðimiz sýnýflar bulunur.
 ----
+Enum kullanýmý : entitylerimizde ayný konuda bulunan sabit verileri enum sýnýfý içerisinde yazarýz. veri çekme properti belirtilmez indexten eriþilir.
+----
