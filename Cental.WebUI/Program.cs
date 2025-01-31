@@ -1,5 +1,6 @@
 using Cental.BusinessLayer.Abstract;
 using Cental.BusinessLayer.Concrete;
+using Cental.BusinessLayer.Extensions;
 using Cental.BusinessLayer.Validations;
 using Cental.DataAccessLayer.Abstract;
 using Cental.DataAccessLayer.Concrete;
@@ -22,7 +23,7 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 //--> business taþýndý -Extensions  v  "
 
-
+builder.Services.AddServiceRegistrations();
 
 //
 builder.Services.AddFluentValidationAutoValidation()

@@ -43,6 +43,9 @@ namespace Cental.BusinessLayer.Extensions
             Services.AddScoped<ITestimonialDal, EfTestimonialDal>();
             Services.AddScoped<ITestimonialService, TestimonialManager>();
 
+            Services.AddScoped<ICarDal ,  EfCarDal>();
+            Services.AddScoped<ICarService , CarManager>();
+
 
 
 

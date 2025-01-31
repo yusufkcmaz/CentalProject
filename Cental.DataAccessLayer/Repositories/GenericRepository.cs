@@ -11,7 +11,7 @@ namespace Cental.DataAccessLayer.Repositories
     //GENERIC SINIF
     public class GenericRepository<T> : IGenericDal<T> where T : class 
     {
-        private readonly CentalContext _context;
+        protected readonly CentalContext _context;
 
         public GenericRepository(CentalContext context)
         {

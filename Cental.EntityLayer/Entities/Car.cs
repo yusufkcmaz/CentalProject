@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cental.EntityLayer.Entities
 {
-    public class Car
+    public class Car 
     {
         public int CarId { get; set; }
         public string ModelName { get; set; }
@@ -19,8 +19,8 @@ namespace Cental.EntityLayer.Entities
         public string Transmission { get; set; }
         public int KM { get; set; }
         public int CarBrandId {  get; set; }    
-        public CarBrand Brand { get; set; } //navigation property
-        public List<Review> Reviews {  get; set; }  
+        public virtual CarBrand Brand { get; set; } //navigation property
+        public virtual List<Review> Reviews {  get; set; }  
         
 
 

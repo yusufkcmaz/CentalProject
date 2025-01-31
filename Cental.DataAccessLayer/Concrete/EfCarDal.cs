@@ -2,6 +2,7 @@
 using Cental.DataAccessLayer.Context;
 using Cental.DataAccessLayer.Repositories;
 using Cental.EntityLayer.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,11 @@ namespace Cental.DataAccessLayer.Concrete
     {
         public EfCarDal(CentalContext context) : base(context)
         {
+        }
+
+        public List<Car> GetCarWithBrands()
+        {
+          return _context.Cars.Include(x=>x.Brand).ToList();
         }
     }
 }

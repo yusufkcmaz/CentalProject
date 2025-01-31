@@ -12,32 +12,32 @@ namespace Cental.BusinessLayer.Concrete
     public class ServiceManager : IServiceService
     {
         private readonly IServiceDal _serviceDal;
+             
+             
 
-        public ServiceManager(IServiceDal serviceDal)
-        {
-            _serviceDal = serviceDal;
-        }
-
-        public void Create(Service entity)
+        public void TCreate(Service entity)
         {
             _serviceDal.Create(entity);
         }
 
-        public void Delete(int id)
+        public void TDelete(int id)
         {
             _serviceDal.Delete(id); 
         }
 
-        public List<Service> GetAll()
+        public List<Service> TGetAll()
         {
             return _serviceDal.GetAll();    
         }
 
-        public Service GetById(int id)
+        public Service TGetById(int id)
         {
             return _serviceDal.GetById(id);
         }
 
-       
+        public void TUpdate(Service entity)
+        {
+            _serviceDal.Update(entity); 
+        }
     }
 }
