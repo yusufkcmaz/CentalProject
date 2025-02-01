@@ -16,7 +16,7 @@ namespace Cental.EntityLayer.Entities
         public string GearType { get; set; }
         public string GasType { get; set; }
         public int Year { get; set; }
-        public string Transmission { get; set; }
+        public string? Transmission { get; set; }
         public int KM { get; set; }
         public int CarBrandId {  get; set; }    
         public virtual CarBrand Brand { get; set; } //navigation property

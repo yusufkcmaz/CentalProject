@@ -2,19 +2,32 @@
 using Cental.BusinessLayer.Abstract;
 using Cental.DtoLayer.CarDtos;
 using Cental.DtoLayer.Enams;
+using Cental.EntityLayer.Entities;
 using Cental.WebUI.Extansions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Cental.WebUI.Controllers
 {
-    public class AdminCarController: Controller
+    public class AdminCarController(ICarService _carService, IMapper _mapper , ICarBrandService _brandService) : Controller
     {
-        private readonly ICarService _carService;
+        //private readonly ICarService _carService;
 
-        public AdminCarController(ICarService carService ,IMapper _mapper)
+        //public AdminCarController()
+        //{
+        //    _carService = _carService;
+        //}
+
+        private void GetValuesİnDropDown() //-> Kısayol Method Kullanımı.
         {
-            _carService = carService;
+            ViewBag.GasTypes = GetEnumValues.GetEnums<GasTypes>();
+            ViewBag.GearTypes = GetEnumValues.GetEnums<GearTypes>();
+            ViewBag.brands = (from x in _brandService.TGetAll()
+                              select new SelectListItem
+                              {
+                                  Text = x.BrandName,
+                                  Value = x.CarBrandId.ToString()
+                              }).ToList();  
         }
 
         public IActionResult Index()
@@ -27,19 +40,19 @@ namespace Cental.WebUI.Controllers
         
         public IActionResult CreateCar()
         {
-            ViewBag.gasTypes = GetEnumValues.GetEnums<GasTypes>();
-            ViewBag.gasTypes = GetEnumValues.GetEnums<GearTypes>();
-            
+            GetValuesİnDropDown();
             return View();  
-
         }
 
         [HttpPost]
 
         public IActionResult CreateCar(CreateCarDto createCarDto)
         {
+            GetValuesİnDropDown();
+            var newCar = _mapper.Map<Car>(createCarDto);
+            _carService.TCreate(newCar);
 
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }
