@@ -6,6 +6,7 @@ using Cental.DataAccessLayer.Abstract;
 using Cental.DataAccessLayer.Concrete;
 using Cental.DataAccessLayer.Context;
 using Cental.DataAccessLayer.Repositories;
+using Cental.EntityLayer.Entities;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
@@ -18,10 +19,15 @@ var builder = WebApplication.CreateBuilder(args);
 //About Service gördüðün zaman aboutmanager sýnýfýndan bir nesne örneði al ve iþlemi onunla yap.
 builder.Services.AddDbContext<CentalContext>();
 
+//Identity Kullanýmý.
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<CentalContext>();
+    
+
+
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 
-//--> business taþýndý -Extensions  v  "
+//--> business taþýndý -Extensions  
 
 builder.Services.AddServiceRegistrations();
 

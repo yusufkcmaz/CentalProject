@@ -1,0 +1,44 @@
+﻿using AutoMapper;
+using Cental.DtoLayer.UserDtos;
+using Cental.EntityLayer.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
+namespace Cental.WebUI.Controllers
+{
+    public class RegisterController(UserManager<AppUser> _userManager ,IMapper _mapper) : Controller
+    {
+        public IActionResult Signup()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Signup(UserRegisterDto model) //--> Hiyerarşi önemi kalkar ve ASYNC kullanılır.
+        {
+            var user = _mapper.Map<AppUser>(model);
+            if (!ModelState.IsValid) //--> Şifere uyumu kontrollü eşleşme oalyı.
+            {
+                return View(model);
+            }
+
+
+            //Şifre kısmının özlleitirme. Default ayarları
+            var result = await _userManager.CreateAsync(user ,model.Password); 
+            if(!result.Succeeded) //--> Şifre default özellikte değilse hata döndürür.
+            {
+                foreach(var error in result.Errors)
+                {
+                    ModelState.AddModelError(error.Code, error.Description);
+
+                }
+                return View(model);
+            }
+
+            return RedirectToAction("Index","Login");
+
+           
+        }
+    }
+}

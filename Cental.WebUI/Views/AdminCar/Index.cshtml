@@ -4,8 +4,6 @@
     Layout = "~/Views/AdminLayout/Layout.cshtml";
 }
 
-<h1>arabalar car</h1>
-<h3>Marka Sayfalar</h3>
 @{
     int count = 0;
 }
@@ -27,10 +25,11 @@
         count++;
         <tr>
             <td>@count</td>
+            <td>@item.Brand.BrandName</td>
             <td>@item.ModelName</td>
             <td>@item.Year</td>
             <td>@item.KM</td>
-            <td>@item.Brand.BrandName</td>
+            
 
             <td><a asp-action="DeleteCar" asp-route-id="@item.CarId" 
              class="btn btn-danger"><i class="fa fa-trash"></i>siL</a> </td>
