@@ -20,7 +20,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CentalContext>();
 
 //Identity Kullanýmý.
-builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<CentalContext>();
+builder.Services.AddIdentity<AppUser, AppRole>(cfg=>
+{
+    cfg.User.RequireUniqueEmail = true;
+    
+})
+    .AddEntityFrameworkStores<CentalContext>()
+    .AddErrorDescriber<CustomErrorDescribar>();
     
 
 
@@ -39,6 +45,12 @@ builder.Services.AddFluentValidationAutoValidation()
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.ConfigureApplicationCookie(config =>
+{
+    config.LoginPath = "/Login/Index";
+    config.LogoutPath = "/Login/Logout"; //--> çýkýþ iþlemlerinde 
+});
+
 
 var app = builder.Build();
 
@@ -54,8 +66,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
-app.UseAuthorization();
+app.UseAuthentication(); // SÝSTEME --> KAYIT KONTROLÜ.
+app.UseAuthorization(); // SÝSTEMDE --> YETKÝ KONTROLÜ.
 
 app.MapControllerRoute(
     name: "default",
