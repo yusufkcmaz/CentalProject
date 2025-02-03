@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Cental.WebUI.Controllers
 {
-    [Authorize]
+  
     public class AdminAboutController : Controller
     {
         private readonly IAboutService _aboutService;
