@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Cental.WebUI.Controllers
 {
+
+    //[Authorize(Roles ="Admin")]
   
     public class AdminAboutController : Controller
     {

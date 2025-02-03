@@ -4,6 +4,8 @@ using Cental.EntityLayer.Entities;
 using Mapster;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.ComponentModel.DataAnnotations;
 
 namespace Cental.WebUI.Controllers
 {
@@ -25,29 +27,44 @@ namespace Cental.WebUI.Controllers
             var succeed = await _userManager.CheckPasswordAsync(user, model.CurrentPassword);
             if (succeed)
             {
-                if(model.ImageFile != null)
+                if (model.ImageFile != null)
                 {
-                    model.ImageUrl = await _imageService.SaveImageAsync(model.ImageFile);
+                    try
+                    {
+                        model.ImageUrl = await _imageService.SaveImageAsync(model.ImageFile);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError(string.Empty, ex.Message);
+                    }
                 }
 
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.Email = model.Email;
+                user.PhoneNumber = model.PhoneNumber;
+                user.ImageUrl = model.ImageUrl;
 
-                var updateUser = model.Adapt<AppUser>();
-
-                var result = await _userManager.UpdateAsync(updateUser);
+                var result = await _userManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "AdminAbout");
                 }
-                foreach(var error in result.Errors)
+
+                foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                     return View(model);
                 }
-                
+
                 ModelState.AddModelError(string.Empty, "Girdiğinizşifre hatalı ,güncelleme yapılamadı");
-                return View(model);
+
+
             }
-         }
+            return View(model);
+        }
+
     }
 
 

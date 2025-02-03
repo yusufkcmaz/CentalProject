@@ -9,12 +9,12 @@ namespace Cental.DtoLayer.UserDtos
 {
     public class ProfileEditDto
     {
-        public String FirstName {  get; set; }
-        public String LastName {  get; set; }
-        public String Email {  get; set; }
-        public String PhoneNumber {  get; set; }
-        public String ImageUrl {  get; set; }
-        public IFormFile ImageFile {  get; set; }
-        public string CurrentPassword { get; set; }
+        public String? FirstName {  get; set; }
+        public String? LastName {  get; set; }
+        public String? Email {  get; set; }
+        public String? PhoneNumber {  get; set; }
+        public String? ImageUrl {  get; set; }
+        public IFormFile? ImageFile {  get; set; }
+        public string? CurrentPassword { get; set; }
     }
 }
