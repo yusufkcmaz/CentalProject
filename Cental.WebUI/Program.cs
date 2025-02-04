@@ -51,8 +51,13 @@ builder.Services.AddControllersWithViews(option =>
 
 builder.Services.ConfigureApplicationCookie(config =>
 {
+    //--> çýkýþ iþlemlerinde 
     config.LoginPath = "/Login/Index";
-    config.LogoutPath = "/Login/Logout"; //--> çýkýþ iþlemlerinde 
+    config.LogoutPath = "/Login/Logout";
+    config.AccessDeniedPath = "/ErrorPage/AccessDenied";
+
+
+    
 });
 
 
@@ -68,6 +73,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseStatusCodePagesWithReExecute("/ErrorPage/NotFound404");
 
 app.UseRouting();
 app.UseAuthentication(); // SÝSTEME --> KAYIT KONTROLÜ.

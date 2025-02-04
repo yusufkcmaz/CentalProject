@@ -14,14 +14,36 @@ namespace Cental.WebUI.Controllers
         {
             var users = await _userManager.Users.ToListAsync();
 
-            var userdto = users.Adapt<List<ResultUserDto>>();
+            var userdto =new List<ResultUserDto>();
+            foreach(var user in users)
+            {
+                var dto = new ResultUserDto();
+
+                dto.Roles = await _userManager.GetRolesAsync(user);
+                dto.Id = user.Id;
+                dto.FirstName = user.FirstName;
+                dto.UserName = user.UserName;
+                dto.LastName = user.LastName;
+                dto.Email = user.Email;
+
+                userdto.Add(dto);
+            }
+
             return View(userdto);
+
         }  
+
+
+
 
         [HttpGet]  //->Kullanıcı id ile bilgilerini getirme.
         public async Task<ActionResult> AssignRol(int id)
         {
+
+
             var user = await _userManager.FindByIdAsync(id.ToString());
+
+            ViewBag.fullName = string.Join(" ", user.FirstName, user.LastName);
 
             var roles = await _roleManager.Roles.ToListAsync();
 
@@ -32,6 +54,7 @@ namespace Cental.WebUI.Controllers
             foreach (var item in roles)
             {
                 var model = new AssignRolDto();
+                model.UserId = user.Id;
                 model.RoleName = item.Name;
                 model.RoleId = item.Id;
                 model.RoleExist = userRoles.Contains(item.Name);
@@ -41,6 +64,9 @@ namespace Cental.WebUI.Controllers
             return View(assignRoleDtoList);
                         
         }
+
+
+
 
         [HttpPost]
       

@@ -1,10 +1,13 @@
 ﻿using Cental.BusinessLayer.Abstract;
 using Cental.EntityLayer.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Cental.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     //INTERFACE -->
     public class AdminCarBrandController(ICarBrandService _carBrandService) : Controller
     {                     

@@ -14,5 +14,6 @@ namespace Cental.DtoLayer.UserDtos
         public string FullName => string.Join(" ", FirstName, LastName); 
         public string UserName { get; set; }
         public string Email { get; set; }
+        public IList<string> Roles { get; set; }
     }
 }

@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 namespace Cental.WebUI.Controllers
 {
 
-    //[Authorize(Roles ="Admin")]
-  
+    [Authorize(Roles = "Admin")]
+
     public class AdminAboutController : Controller
     {
         private readonly IAboutService _aboutService;
