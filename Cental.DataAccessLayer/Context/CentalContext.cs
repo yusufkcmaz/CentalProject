@@ -11,6 +11,7 @@ namespace Cental.DataAccessLayer.Context
 {
     public class CentalContext : IdentityDbContext<AppUser,AppRole,int>
     {
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("server=IŞ\\SQLEXPRESS;database=CentalDb;integrated security=true;trustServerCertificate=true");
@@ -26,6 +27,7 @@ namespace Cental.DataAccessLayer.Context
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<UserSocial> UserSocials  { get; set; }
 
 
 

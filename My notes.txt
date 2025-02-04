@@ -8,9 +8,12 @@
 * private : Sadece bulunan sýnýftan eriþilir.
 * protected : Sadece bulunan sýnýf ve miras alýnan sýnýflar eriþir.
 * internal : Bulunduðu katmandan eriþir .
-----
+
+----DataAccessLayaer-2---
 Abstract : Ýnterfaceler bulunur.
 concreate : Ýnterfacelri implament ettiðimiz sýnýflar bulunur.
+Repostory : Crud iþlemleri gerçekleþtiren kýsýmdýr.
+paket yüklemeler(EntityFrameWork) -> efcore , design , sql ,tools 
 ----
 Enum kullanýmý : entitylerimizde ayný konuda bulunan sabit verileri enum sýnýfý içerisinde yazarýz. veri çekme properti belirtilmez indexten eriþilir.
 ----

@@ -48,6 +48,8 @@ namespace Cental.BusinessLayer.Extensions
 
             Services.AddScoped<IImageService , ImageService>();
 
+            //Social media eklenecek
+
 
 
 
