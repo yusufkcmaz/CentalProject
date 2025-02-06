@@ -1,0 +1,21 @@
+﻿@using Cental.DtoLayer.UserSocialDtos
+@model CreateUserSocialDto
+@{
+    ViewData["Title"] = "Sosyal medya ekle";
+    Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
+}
+
+
+<form method="post">
+    <label>Sosyal Medya Adı</label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <br />
+    <label>Sosyal Medya İkonu</label>
+    <input type="text" asp-for="Icon" class="form-control" />
+    <br />
+    <label>Sosyal Medya Url</label>
+    <input type="text" asp-for="Url" class="form-control" />
+    <br />
+    <button class="btn btn-outline-dark">Kaydet</button>
+</form>
+

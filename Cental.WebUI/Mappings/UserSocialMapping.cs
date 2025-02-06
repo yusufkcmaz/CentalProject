@@ -1,17 +1,18 @@
 ﻿using AutoMapper;
 using Cental.DtoLayer.UserSocialDtos;
 using Cental.EntityLayer.Entities;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
+//using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 
 namespace Cental.WebUI.Mappings
 {
     public class UserSocialMapping : Profile
     {
-        protected UserSocialMapping()
+        public UserSocialMapping()
         {
-            CreateMap<UserSocial , ResultUserSocialDto>().ReverseMap();
-            CreateMap<UserSocial , CreateUserSocialDto>().ReverseMap();
-            CreateMap<UserSocial , UpdateUserSocialDto>().ReverseMap();
+            CreateMap<UserSocial, ResultUserSocialDto>().ForMember(dest => dest.SocialMediaUrl, o =>
+                                                       o.MapFrom(src => src.Url));
+            CreateMap<UserSocial, CreateUserSocialDto>().ReverseMap();
+            CreateMap<UserSocial, UpdateUserSocialDto>().ReverseMap();
         }
     }
 }

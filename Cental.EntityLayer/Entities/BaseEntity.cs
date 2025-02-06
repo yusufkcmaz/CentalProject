@@ -8,8 +8,8 @@ namespace Cental.EntityLayer.Entities
 {
     public abstract class BaseEntity
     {
-        protected BaseEntity()
-        {
-        }
+         
+        
+        
     }
 }

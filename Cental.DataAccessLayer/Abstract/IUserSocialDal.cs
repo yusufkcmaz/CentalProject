@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cental.EntityLayer.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Cental.DataAccessLayer.Abstract
 {
-    internal class IUserSocialDal
+   public interface IUserSocialDal :IGenericDal<UserSocial>
     {
+        List<UserSocial> GetSocialsByUserId(int userId);
     }
 }

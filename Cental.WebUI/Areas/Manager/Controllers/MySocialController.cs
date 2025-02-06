@@ -1,19 +1,25 @@
-﻿using Cental.DtoLayer.UserSocialDtos;
+﻿using AutoMapper;
+using Cental.BusinessLayer.Abstract;
+using Cental.DtoLayer.UserSocialDtos;
 using Cental.EntityLayer.Entities;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cental.WebUI.Areas.Manager.Controllers
 {
     [Area("Manager")]
     [Authorize(Roles ="Manager")]
-    public class MySocialController : Controller
+    public class MySocialController(IUserSocialService _userSocialService ,IMapper _mapper, UserManager<AppUser>_userManager) : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            
-            return View();
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var values = _userSocialService.TGetSocialsByUserId(user.Id);
+
+            return View(values);
         }
+
 
         public IActionResult CreateSocial()
         {
@@ -21,12 +27,19 @@ namespace Cental.WebUI.Areas.Manager.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateSocial(CreateUserSocialDto model)
+        public async Task<IActionResult> CreateSocial(CreateUserSocialDto model)
         {
-            //var newSocial = _mapper.Map<UserSocial>(model);
-            //_userSocialService.TCreate(newSocial);
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var newSocial = _mapper.Map<UserSocial>(model);
+            newSocial.UserId = user.Id;
+            _userSocialService.TCreate(newSocial);
             return RedirectToAction("Index");
+        }
 
+        public IActionResult DeleteSocial(int id)
+        {
+            _userSocialService.TDelete(id);
+            return NoContent();
         }
     }
 }

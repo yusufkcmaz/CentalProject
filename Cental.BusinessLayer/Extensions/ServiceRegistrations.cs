@@ -1,7 +1,9 @@
-﻿using Cental.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using Cental.BusinessLayer.Abstract;
 using Cental.BusinessLayer.Concrete;
 using Cental.DataAccessLayer.Abstract;
 using Cental.DataAccessLayer.Concrete;
+using Cental.EntityLayer.Entities;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -48,6 +50,10 @@ namespace Cental.BusinessLayer.Extensions
 
             Services.AddScoped<IImageService , ImageService>();
 
+            Services.AddScoped<IUserSocialService, UserSocialManager>();
+            Services.AddScoped<IUserSocialDal, EfUserSocialDal>();
+
+            //Services.AddScoped<IMapper , Mapper>();
             //Social media eklenecek
 
 
