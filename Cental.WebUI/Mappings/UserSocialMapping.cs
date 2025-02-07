@@ -9,7 +9,7 @@ namespace Cental.WebUI.Mappings
     {
         public UserSocialMapping()
         {
-            CreateMap<UserSocial, ResultUserSocialDto>().ForMember(dest => dest.SocialMediaUrl, o =>
+            CreateMap<UserSocial, ResultUserSocialDto>().ForMember(dest =>                                                            dest.SocialMediaUrl, o =>
                                                        o.MapFrom(src => src.Url));
             CreateMap<UserSocial, CreateUserSocialDto>().ReverseMap();
             CreateMap<UserSocial, UpdateUserSocialDto>().ReverseMap();

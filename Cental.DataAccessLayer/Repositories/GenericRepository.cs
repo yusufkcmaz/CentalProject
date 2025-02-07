@@ -42,7 +42,6 @@ namespace Cental.DataAccessLayer.Repositories
         {
             return _context.Set<T>().Find(id);
 
-
         }
 
         public void Update(T entity)

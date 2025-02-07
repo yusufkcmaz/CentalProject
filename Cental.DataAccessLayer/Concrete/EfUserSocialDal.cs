@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Cental.DataAccessLayer.Concrete
 {
-    public class EfUserSocialDal : GenericRepository<UserSocial>, IUserSocialDal
+    public class EfUserSocialDal :GenericRepository<UserSocial> , IUserSocialDal
     {
         public EfUserSocialDal(CentalContext context) : base(context)
         {
@@ -18,7 +18,7 @@ namespace Cental.DataAccessLayer.Concrete
 
         public List<UserSocial> GetSocialsByUserId(int userId)
         {
-            return _context.UserSocials.Where(x => x.UserId == userId).ToList();
+            return _context.UserSocials.Where(x=>x.UserId== userId).ToList();
         }
     }
 }

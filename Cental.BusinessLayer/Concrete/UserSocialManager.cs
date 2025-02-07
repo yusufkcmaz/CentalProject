@@ -1,10 +1,8 @@
-﻿using Cental.BusinessLayer.Abstract;
-using AutoMapper;
+﻿using AutoMapper;
+using Cental.BusinessLayer.Abstract;
 using Cental.DataAccessLayer.Abstract;
-using Cental.DataAccessLayer.Concrete;
 using Cental.DtoLayer.UserSocialDtos;
 using Cental.EntityLayer.Entities;
-//using MapsterMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +11,7 @@ using System.Threading.Tasks;
 
 namespace Cental.BusinessLayer.Concrete
 {
-    public class UserSocialManager(IUserSocialDal _userSocialDal , IMapper _mapper): IUserSocialService
-
+    public class UserSocialManager(IUserSocialDal _userSocialDal,IMapper _mapper) : IUserSocialService
     {
         public void TCreate(UserSocial entity)
         {
@@ -38,6 +35,8 @@ namespace Cental.BusinessLayer.Concrete
 
         public List<ResultUserSocialDto> TGetSocialsByUserId(int userId)
         {
+            //throw new NotImplementedException();
+
             var values = _userSocialDal.GetSocialsByUserId(userId);
 
             return _mapper.Map<List<ResultUserSocialDto>>(values);

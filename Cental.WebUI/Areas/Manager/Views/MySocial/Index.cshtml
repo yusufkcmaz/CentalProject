@@ -1,5 +1,4 @@
-﻿ @using Cental.DtoLayer.UserSocialDtos
- @model List<ResultUserSocialDto>
+﻿ @model List<ResultUserSocialDto>
 @{
     ViewData["Title"] = "Sosyal Medyalarım";
     Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
@@ -12,7 +11,7 @@
 <table class="table table-bordered">
     <tr>
         <th>#</th>
-        <th>Sosyal Medya</th>
+        <th>Sosyal Medya </th>
         <th>Sil</th>
         <th>Güncelle</th>
     </tr>
@@ -25,17 +24,17 @@
                 <a href="@item.SocialMediaUrl" target="_blank"><i class="@item.Icon"></i>@item.Title</a>
             </td>
 
-            <td><a asp-action="DeleteSocial" asp-route-id="@item.UserSocialId" class="btn btn-danger">Sil</a> </td>
+            <td><button onclick="DeleteSocial(@item.UserSocialId)" class="btn btn-danger">Sil</button> </td>
             <td><a asp-action="UpdateUserSocial" asp-route-id="@item.UserSocialId" class="btn btn-info">Güncelle</a> </td>
         </tr>
     }
 </table>
 
-<a asp-action="CreateSocial" asp-controller="MySocial" asp-area="Manger "class="btn btn-primary">Yeni Sosyal Medya Ekle</a>
+<a asp-action="CreateSocial" asp-controller="MySocial" asp-area="Manager " class="btn btn-primary">Yeni Sosyal Medya Ekle</a>
 
 <script>
 
-        function deleteSocial(id){
+        function DeleteSocial(id){
 
             Swal.fire({
                 title: "Silmek istediğinize emin misiniz?",

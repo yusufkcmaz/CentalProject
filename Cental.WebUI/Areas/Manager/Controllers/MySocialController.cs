@@ -26,6 +26,7 @@ namespace Cental.WebUI.Areas.Manager.Controllers
             return View();
         }
 
+
         [HttpPost]
         public async Task<IActionResult> CreateSocial(CreateUserSocialDto model)
         {
@@ -39,7 +40,7 @@ namespace Cental.WebUI.Areas.Manager.Controllers
         public IActionResult DeleteSocial(int id)
         {
             _userSocialService.TDelete(id);
-            return NoContent();
+            return RedirectToAction("Index");
         }
     }
 }
