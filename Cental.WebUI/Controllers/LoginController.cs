@@ -7,13 +7,19 @@ using Microsoft.AspNetCore.Mvc;
 namespace Cental.WebUI.Controllers
 {
     [AllowAnonymous]
-    public class LoginController(SignInManager<AppUser> _signInManager) : Controller
+    public class LoginController(SignInManager<AppUser> _signInManager , UserManager<AppUser> _userManager ) : Controller
     {
         public async Task<IActionResult> Index()
         {
             await _signInManager.SignOutAsync();
             return View();
         }
+
+        
+
+
+
+
 
         [HttpPost]
         public async Task<IActionResult> Index(UserLoginDto model ,string? returnUrl)
@@ -25,14 +31,49 @@ namespace Cental.WebUI.Controllers
                 return View(model);
 
             }
-            if(returnUrl !=null)
+          
+
+
+            if (returnUrl !=null)
             {
                 return Redirect(returnUrl);                     
             }
-               
+            
+            //Kullanıcı Rolüne göre bulma ve yönlendirme.
 
-            return RedirectToAction("Index" , "AdminAbout");
+            var user =await _userManager.FindByNameAsync(model.UserName);
+
+            var userRoles = await _userManager.GetRolesAsync(user);
+
+            foreach (var role in userRoles)
+            {
+                if (role == "Admin")
+                {
+                    return RedirectToAction("Index", "AdminAbout");
+                }
+
+                if (role == "Manager")
+                {
+                    return RedirectToAction("Index", "MySocial", new { area = "Manager" });
+                }
+
+                if (role == "User")
+                {
+                    return RedirectToAction("Index", "MyProfile ", new { area = "User" });
+                }
+
+                
+            }
+            return RedirectToAction("ındex", "Defaultuı");
+
         }
+        
+
+
+
+
+
+
 
         public async Task<IActionResult> Logout()
         {

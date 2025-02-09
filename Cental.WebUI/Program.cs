@@ -87,14 +87,11 @@ app.MapControllerRoute(
 
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    name: "defaultuý",
+    pattern: "{controller=Defaultuý}/{action=Index}/{id?}");
 
 
-    app.MapControllerRoute(
-      name: "areas",
-      pattern: "{area:exists}/{controller=Defaultuý}/{action=Index}/{id?}"
-    );
+  
 
 
 app.Run();

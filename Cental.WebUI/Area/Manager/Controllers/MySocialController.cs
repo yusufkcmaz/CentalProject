@@ -8,8 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Cental.WebUI.Areas.Manager.Controllers
 {
-    [Area("Manager")]
-    [Authorize(Roles ="Manager")]
+    //[Area("Manager")]
+    //[Authorize(Roles ="Admin")] //
     public class MySocialController(IUserSocialService _userSocialService ,IMapper _mapper, UserManager<AppUser>_userManager) : Controller
     {
         public async Task<IActionResult> Index()
@@ -21,21 +21,31 @@ namespace Cental.WebUI.Areas.Manager.Controllers
         }
 
 
-        public IActionResult CreateSocial()
+        public IActionResult CreateSocial() 
         {
             return View();
         }
 
 
+
         [HttpPost]
         public async Task<IActionResult> CreateSocial(CreateUserSocialDto model)
         {
+
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
             var newSocial = _mapper.Map<UserSocial>(model);
+
             newSocial.UserId = user.Id;
+
             _userSocialService.TCreate(newSocial);
+
             return RedirectToAction("Index");
         }
+
+
+
+
 
         public IActionResult DeleteSocial(int id)
         {
