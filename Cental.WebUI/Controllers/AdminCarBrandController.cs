@@ -3,6 +3,7 @@ using Cental.EntityLayer.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using PagedList.Core;
 
 namespace Cental.WebUI.Controllers
 {
@@ -11,10 +12,11 @@ namespace Cental.WebUI.Controllers
     //INTERFACE -->
     public class AdminCarBrandController(ICarBrandService _carBrandService) : Controller
     {                     
-        
-        public IActionResult Index()
+        //PagedList işlemi
+        public IActionResult Index(int page=1,int pageSize=3)
         {
-            var values = _carBrandService.TGetAll();
+            var brands = _carBrandService.TGetAll().AsQueryable();
+            var values = new PagedList<CarBrand>(brands, page, pageSize);
             return View(values);
         }
 

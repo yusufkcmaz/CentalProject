@@ -8,8 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Cental.WebUI.Areas.Manager.Controllers
 {
-    //[Area("Manager")]
-    //[Authorize(Roles ="Admin")] //
+    [Area("Manager")]
+    [Authorize(Roles = "Manager")] //
     public class MySocialController(IUserSocialService _userSocialService ,IMapper _mapper, UserManager<AppUser>_userManager) : Controller
     {
         public async Task<IActionResult> Index()

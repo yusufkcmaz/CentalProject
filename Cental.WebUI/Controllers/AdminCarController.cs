@@ -33,9 +33,9 @@ namespace Cental.WebUI.Controllers
                               }).ToList();  
         }
 
-        public IActionResult Index()
+        public IActionResult Index()//--> Listeleme.
         {
-            var values = _carService.TGetAll() ; //--> Listeleme.
+            var values = _carService.TGetAll(); 
             return View(values);
         }
 

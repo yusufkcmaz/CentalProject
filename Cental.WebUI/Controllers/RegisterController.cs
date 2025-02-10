@@ -17,7 +17,7 @@ namespace Cental.WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Signup(UserRegisterDto model) //--> Hiyerarşi önemi kalkar ve ASYNC kullanılır.
+        public async Task<IActionResult> Signup(UserRegisterDto model) 
         {
             var user = _mapper.Map<AppUser>(model);
             if (!ModelState.IsValid) //--> Şifere uyumu kontrollü eşleşme oalyı.
@@ -37,7 +37,7 @@ namespace Cental.WebUI.Controllers
                 }
                 return View(model);
             }
-
+            await _userManager.AddToRoleAsync(user, "User");
             return RedirectToAction("Index","Login");
 
            

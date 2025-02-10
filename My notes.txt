@@ -18,3 +18,6 @@ paket yüklemeler(EntityFrameWork) -> efcore , design , sql ,tools
 Enum kullanımı : entitylerimizde aynı konuda bulunan sabit verileri enum sınıfı içerisinde yazarız. veri çekme properti belirtilmez indexten erişilir.
 ----
 SweetAlert:Uygulaması--> Areas/MySocial/Index.
+
+sayfalama-Paged işlemi kütüphanesi: -->PagedListCoreMvc
+AdminCarBrand/Index -->Paged
