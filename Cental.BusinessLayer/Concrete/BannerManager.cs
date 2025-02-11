@@ -44,5 +44,7 @@ namespace Cental.BusinessLayer.Concrete
         {
             _bannerDal.Update(entity);
         }
+
+       
     }
 }

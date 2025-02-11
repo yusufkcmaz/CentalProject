@@ -18,6 +18,7 @@
         <th>Açıklama</th>
         <th>Sil</th>
         <th>Güncelle</th>
+        <th>Ekle</th>
 
 
 
@@ -33,8 +34,10 @@
             <td><a asp-action="DeleteBanner" asp-route-id="@item.BannerId" class="btn btn-danger">siL</a> </td>
             <td><a asp-action="UpdateBanner" asp-route-id="@item.BannerId" class="btn btn-info">Güncelle</a> </td>
 
+            <td><a asp-action="CreateBanner" asp-controller="AdminBanner" class="btn btn-primary">Yeni Öne Çıkan Alan Ekle</a></td>
+
+
         </tr>
     }
 
 </table>
-<a asp-action="CreateBanner" asp-controller="AdminBanner" class="btn btn-primary">Yeni Öne Çıkan Alan Ekle</a>
