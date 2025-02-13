@@ -1,4 +1,5 @@
 ﻿using Cental.BusinessLayer.Abstract;
+using Cental.BusinessLayer.Concrete;
 using Cental.EntityLayer.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -6,10 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace Cental.WebUI.Areas.Manager.Controllers
 {
 
-    [Area("Admin")]
+    [Area("Manager")]
     [Authorize(Roles = "Admin")] //
 
-    public class FeatureController(IFeatureService _featureService) : Controller
+    public class FeatureController(IFeatureService _featureService ) : Controller
     {
         public IActionResult Index()
         {
@@ -47,5 +48,25 @@ namespace Cental.WebUI.Areas.Manager.Controllers
             return View(__feature);
         }
 
+        public IActionResult AddFeatrue()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+
+        public IActionResult AddFeatrue(Feature feature)
+        {
+            if (ModelState.IsValid)
+            {
+                _featureService.TCreate(feature);
+
+                return RedirectToAction("Index");
+            }
+           
+
+            return View(feature);
+        }
     }
 }

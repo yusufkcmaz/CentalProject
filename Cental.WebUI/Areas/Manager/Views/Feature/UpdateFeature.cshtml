@@ -1,0 +1,27 @@
+﻿@using Cental.EntityLayer.Entities
+@model Feature 
+@{
+    ViewData["Title"] = "UpdateFeatu";
+    Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
+}
+
+<form asp-action="UpdateFeature" method="post">
+    <input type="hidden" asp-for=FeatureId asp-controller="Feature" />
+
+    <label>Başlık</label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <br />
+
+    <label>Açıklama</label>
+    <input type="text" asp-for="Description" class="form-control" />
+    <br />
+
+
+    <label>İkon</label>
+    <input type="text" asp-for="Icon" class="form-control" />
+    <br />
+
+    <button class="btn btn-success">Güncelle</button>
+</form>
+
+

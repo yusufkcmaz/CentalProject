@@ -11,6 +11,8 @@ namespace Cental.BusinessLayer.Concrete
 {
     public class FeatureManager (IFeatureDal _featureDal) : IFeatureService
     {
+       
+
         public void TCreate(Feature entity)
         {
             _featureDal.Create(entity); 

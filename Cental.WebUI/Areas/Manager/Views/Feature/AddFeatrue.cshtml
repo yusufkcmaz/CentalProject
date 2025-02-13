@@ -1,0 +1,20 @@
+﻿@using Cental.EntityLayer.Entities
+@model Feature
+@{
+    ViewData["Title"] = "Ekle Featrue";
+    Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
+}
+<form method="post" asp-action="AddFeatrue" asp-controller="Feature">
+    <label>Başlık</label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <br />
+    <label>Medya İkonu</label>
+    <input type="text" asp-for="Icon" class="form-control" />
+    <br />
+    <label>Açıklama</label>
+    <input type="text" asp-for="Description" class="form-control" />
+    <br />
+    <button class="btn btn-outline-dark">Kaydet</button>
+</form>
+
+

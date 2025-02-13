@@ -11,6 +11,7 @@
             <th>ID</th>
             <th>Başlık</th>
             <th>Açıklama</th>
+            <th>İkon Görseli</th>
             <th>İşlemler</th>
         </tr>
     </thead>
@@ -21,9 +22,16 @@
                 <td>@item.FeatureId</td>
                 <td>@item.Title</td>
                 <td>@item.Description</td>
+                <td>@item.Icon</td>
                 <td>
-                    <a href="@Url.Action("Update", "Feature", new { id = item.FeatureId})" class="btn btn-warning">Düzenle</a>
-                    <a href="@Url.Action("Delete", "Feature", new { id = item.FeatureId })" class="btn btn-danger" onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+
+                   @*  <!--<a href="@Url.Action("AddFeatrue", "Feature")" class="btn btn-success">Ekle</a> -->
+ *@
+                    <a asp-action="AddFeatrue" asp-area="Manager" asp-controller="Feature" class="btn btn-primary">EKle</a>
+
+
+                    <a href="@Url.Action("UpdateFeature", "Feature", new { id = item.FeatureId})" class="btn btn-warning">Düzenle</a>
+                    <a href="@Url.Action("DeleteFeature", "Feature", new { id = item.FeatureId })" class="btn btn-danger" onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
                 </td>
             </tr>
         }
