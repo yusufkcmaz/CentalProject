@@ -11,7 +11,8 @@ namespace Cental.BusinessLayer.Concrete
 {
     public class CarManager(ICarDal _carDal) : ICarService
     {
-       
+        
+
         public void TCreate(Car entity)
         {
             _carDal.Create(entity);

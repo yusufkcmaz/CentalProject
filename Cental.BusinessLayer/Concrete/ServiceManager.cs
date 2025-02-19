@@ -12,8 +12,11 @@ namespace Cental.BusinessLayer.Concrete
     public class ServiceManager : IServiceService
     {
         private readonly IServiceDal _serviceDal;
-             
-             
+
+        public ServiceManager(IServiceDal serviceDal)
+        {
+            _serviceDal = serviceDal;
+        }
 
         public void TCreate(Service entity)
         {
