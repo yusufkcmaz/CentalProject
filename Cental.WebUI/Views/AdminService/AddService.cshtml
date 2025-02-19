@@ -1,0 +1,27 @@
+﻿@model Service
+@{
+    ViewData["Title"] = "Service Ekle";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+
+<form method="post">
+    <label>Başlık</label>
+    <input type="text" asp-for="Title" class="form-control accordion-item" />
+    <br />
+       
+    <label>Açıklama</label>
+    <input type="text" asp-for="Description" class="form-control" required />
+    <br />
+
+    <label>Görsel İcon</label>
+    <input type="text" asp-for="Icon" class="form-control" />
+    <br />
+       
+    
+
+    <button class="btn btn-success">Kaydet</button>
+
+
+</form>
+

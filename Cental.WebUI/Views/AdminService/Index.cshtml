@@ -9,27 +9,27 @@
         <th>#</th>
         <th>Başlık</th>
         <th>Açıklaması</th>
-        <th>Açıklam İcon</th>
+        <th>Görsel İcon</th>
         <th>Güncelle</th>
         <th>Sil</th>
-       
+
 
     </tr>
 
-        @foreach (var item in Model)
+    @foreach (var item in Model)
 
-        {
-            <tr>
-          <td>@item.ServiceID</td>
-          <td>@item.Title</td>
-          <td>@item.Description</td>
-          <td>@item.Icon</td>
+    {
+        <tr>
+            <td>@item.ServiceID</td>
+            <td>@item.Title</td>
+            <td>@item.Description</td>
+            <td>@item.Icon</td>
 
-            <td><a asp-action="UpdateService" asp-route-id="@item.ServiceID" class="btn btn-danger">Sil</a> </td>
-            
-            <td><a asp-action="DeleteService" asp-route-id="@item.ServiceID" class="btn btn-success">Güncelle</a> </td>
+            <td><a asp-action="UpdateService" asp-route-id="@item.ServiceID" class="btn btn-danger">Güncelle</a> </td>
+
+            <td><a asp-action="DeleteService" asp-route-id="@item.ServiceID" class="btn btn-success">Sil</a> </td>
         </tr>
-        }
+    }
 
 
 
