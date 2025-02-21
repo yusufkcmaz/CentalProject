@@ -1,0 +1,42 @@
+﻿@using Cental.EntityLayer.Entities
+@model List<Process>
+@{
+    ViewData["Title"] = "İşlemler";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+
+<table class="table table-borderless">
+    <tr>
+        <th>#</th>
+        <th>Başlık</th>
+        <th>Açıklaması</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+
+    {
+        <tr>
+            <td>@item.ProcessId</td>
+            <td>@item.Title</td>
+            <td>@item.Description</td>
+
+            <td><a asp-action="CreateProcess"  asp-route-id="@item.ProcessId" class="btn btn-danger">Güncelle</a> </td>
+
+            <td><a asp-action="DeleteProcess" asp-route-id="@item.ProcessId" class="btn btn-success">Sil</a> </td>
+        </tr>
+    }
+
+
+
+
+</table>
+<a asp-action="CreateProcess" asp-controller="AdminProcess" asp-area="Admin" class="btn btn-primary">İşlemler ekle</a>
+
+
+
+

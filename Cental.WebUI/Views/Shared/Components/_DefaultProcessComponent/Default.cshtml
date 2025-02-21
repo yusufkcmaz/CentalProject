@@ -1,0 +1,61 @@
+﻿@model List<Process>
+@*
+   _DefaultProcessComponent
+*@
+
+<div class="container-fluid steps py-5">
+    <div class="container py-5">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="display-5 text-capitalize text-white mb-3">Cental<span class="text-primary">İşlemleri</span></h1>
+            <p class="mb-0 text-white">
+                Cental olarak işleri daha iyi götürmeyi hedefliyoruz.
+            </p>
+        </div>
+        <div class="row g-4">
+
+            @foreach (var item in Model.Take(1))
+            {
+
+                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="steps-item p-4 mb-4">
+                        <h4>@item.Title</h4>
+                        <p class="mb-0"> @item.Description </p>
+                        <div class="setps-number">01.</div>
+                    </div>
+                </div>
+            }
+
+            @foreach (var ser in Model.Skip(1).Take(1))
+
+            {
+                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="steps-item p-4 mb-4">
+                        <h4>@ser.Title</h4>
+                        <p class="mb-0">@ser.Description</p>
+                        <div class="setps-number">02.</div>
+                    </div>
+                </div>
+
+            }
+
+            @foreach (var Car in Model.Skip(2).Take(1))
+            {
+
+                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="steps-item p-4 mb-4">
+                        <h4>@Car.Title</h4>
+                        <p class="mb-0">@Car.Description</p>
+                        <div class="setps-number">03.</div>
+                    </div>
+                </div>
+            }
+            
+        </div>
+        
+    </div>
+    
+
+</div>
+
+
+
