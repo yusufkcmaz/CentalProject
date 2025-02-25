@@ -1,0 +1,104 @@
+﻿@model List<ResultTestimonialDto>
+@*
+    _DefaultTestimonialComponent
+*@
+
+<div class="container-fluid testimonial pb-5">
+    <div class="container pb-5">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="display-5 text-capitalize mb-3">Müşteri<span class="text-primary">Yorumları</span></h1>
+            <p class="mb-0">
+                Bizim müşterilerimizin Yorumları
+            </p>
+        </div>
+        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+
+            @foreach (var item in Model)
+            {
+
+                <div class="testimonial-item">
+                    <div class="testimonial-quote">
+                        <i class="fa fa-quote-right fa-2x"></i>
+                    </div>
+                    <div class="testimonial-inner p-4">
+
+                        <img src="@item.ImageUrl" class="img-fluid" alt="">
+                        <div class="ms-4">
+                            <h4>@item.Name</h4>
+                            <p>@item.Title</p>
+                            <div class="d-flex text-primary">
+
+                                @*  Sayaç *@
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    if (i <= item.Review)
+                                    {
+                                        <i class="fas fa-star"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fas fa-star text-body"></i>
+                                    }
+                                }
+
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="border-top rounded-bottom p-4">
+                        <p class="mb-0">@item.Commend</p>
+                    </div>
+                </div>
+
+            }
+            <div class="testimonial-item">
+                <div class="testimonial-quote">
+                    <i class="fa fa-quote-right fa-2x"></i>
+                </div>
+                <div class="testimonial-inner p-4">
+                    <img src="~/Cental-1.0.0/img/testimonial-2.jpg" class="img-fluid" alt="">
+                    <div class="ms-4">
+                        <h4>Person Name</h4>
+                        <p>Profession</p>
+                        <div class="d-flex text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star text-body"></i>
+                            <i class="fas fa-star text-body"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-top rounded-bottom p-4">
+                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam soluta neque ab repudiandae reprehenderit ipsum eos cumque esse repellendus impedit.</p>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <div class="testimonial-quote">
+                    <i class="fa fa-quote-right fa-2x"></i>
+                </div>
+                <div class="testimonial-inner p-4">
+                    <img src="~/Cental-1.0.0/img/testimonial-3.jpg" class="img-fluid" alt="">
+                    <div class="ms-4">
+                        <h4>Person Name</h4>
+                        <p>Profession</p>
+                        <div class="d-flex text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star text-body"></i>
+                            <i class="fas fa-star text-body"></i>
+                            <i class="fas fa-star text-body"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-top rounded-bottom p-4">
+                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam soluta neque ab repudiandae reprehenderit ipsum eos cumque esse repellendus impedit.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
