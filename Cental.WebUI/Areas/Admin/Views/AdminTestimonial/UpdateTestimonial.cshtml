@@ -1,0 +1,73 @@
+﻿@using Cental.DtoLayer.TestimonialDtos
+@model UpdateTestimoniaDto
+@{
+    ViewData["Title"] = "Yorum güncelleme";
+    Layout = "~/Areas/Admin/Views/Layout/_Layout.cshtml";
+}
+
+
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0"><i class="fas fa-edit"></i> Referans Güncelle</h4>
+        </div>
+
+
+        <div class="card-body">
+            <form method="post" asp-action="UpdateTestimonial" asp-controller="AdminTestimonial" asp-area="Admin">
+
+                <input type="hidden" asp-for="TestimonialId" />
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Profil Resmi</label>
+                    <input type="file"  class="form-control" />
+                    <small class="form-text text-muted">Resim yüklemek için dosya seçebilirsiniz.</small>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Profil Resmi URL</label>
+                    <input type="text" asp-for="ImageUrl" class="form-control" placeholder="Resim URL'sini buraya girin..." />
+                </div>
+
+
+
+
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Ad Soyad</label>
+                    <textarea asp-for="Name" class="form-control" placeholder="Ad giriniz.." rows="3" required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Ünvan</label>
+                    <textarea asp-for="Title" class="form-control" placeholder="Ünvan giriniz.." rows="3" required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Derece</label>
+                    <textarea asp-for="Review" class="form-control" placeholder="Derece giriniz.." rows="3" required></textarea>
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Yorum</label>
+                    <textarea asp-for="Commend" class="form-control" placeholder="Yorum giriniz.." rows="3" required></textarea>
+                </div>
+
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-success fw-bold">
+                        <i class="fas fa-save"></i> Güncelle
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card-footer text-center">
+            <a asp-area="Admin" asp-controller="AdminTestimonial" asp-action="Index" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left"></i> Geri Dön.
+            </a>
+        </div>
+    </div>
+</div>
+
