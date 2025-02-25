@@ -1,33 +1,32 @@
 ﻿@using Cental.EntityLayer.Entities
 @model Process
 @{
-    ViewData["Title"] = "İşlem güncelle";
+    ViewData["Title"] = "Yeni işlem ekle";
+
     Layout = "~/Areas/Admin/Views/Layout/_Layout.cshtml";
 }
 
 <div class="container mt-4">
     <div class="card shadow-lg">
         <div class="card-header bg-primary text-white">
-            <h4 class="mb-0"><i class="fas fa-edit"></i> İşlem Güncelle</h4>
+            <h4 class="mb-0"><i class="fas fa-plus-circle"></i> Yeni İşlem Ekle</h4>
         </div>
 
-
         <div class="card-body">
-            <form method="post" asp-action="UpdateProcess" asp-controller="AdminProcess" asp-area="Admin">
+            <form method="post" asp-action="AddProcess" asp-controller="AdminProcess" asp-area="Admin">
+
 
                 <div class="mb-3">
                     <label class="form-label fw-bold">Başlık</label>
                     <input type="text" asp-for="Title" class="form-control" placeholder="İşlem başlığını girin..." required />
                 </div>
-
                 <div class="mb-3">
                     <label class="form-label fw-bold">Açıklama</label>
                     <textarea asp-for="Description" class="form-control" placeholder="İşlem açıklamasını girin..." rows="3" required></textarea>
                 </div>
-
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-success fw-bold">
-                        <i class="fas fa-save"></i> Güncelle
+                        <i class="fas fa-save"></i> Kaydet
                     </button>
                 </div>
             </form>

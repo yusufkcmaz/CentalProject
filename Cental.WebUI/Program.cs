@@ -11,6 +11,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileSystemGlobbing.Internal;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -80,10 +81,20 @@ app.UseAuthentication(); // SÝSTEME --> KAYIT KONTROLÜ.
 app.UseAuthorization(); // SÝSTEMDE --> YETKÝ KONTROLÜ.
 
 
+app.MapAreaControllerRoute(
+    name: "admin",
+    areaName: "Admin",
+    pattern: "Admin/{controller=Home}/{action=Index}/{id?}"
+    );
+
+
+
+
 app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
   );
+
 
 
 app.MapControllerRoute(
@@ -91,7 +102,8 @@ app.MapControllerRoute(
     pattern: "{controller=Defaultuý}/{action=Index}/{id?}");
 
 
-  
+
+
 
 
 app.Run();
