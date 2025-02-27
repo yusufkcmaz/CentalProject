@@ -10,7 +10,7 @@ using System.Runtime.Intrinsics.X86;
 
 namespace Cental.WebUI.ViewComponents.DefaultUI
 {
-    public class _DefaultCounterComponent(ICarDal _carDal , ICarService _carService , ICarBrandService _carBrandService ):ViewComponent
+    public class _DefaultCounterComponent(ICarDal _carDal , ICarService _carService , ICarBrandService _carBrandService ,ITestimonialService _testimonialService ):ViewComponent
     {
        
         public IViewComponentResult Invoke ()
@@ -18,6 +18,7 @@ namespace Cental.WebUI.ViewComponents.DefaultUI
             ViewBag.Car = _carService.TGetAll().Count();
             ViewBag.Km = _carService.TGetAll().Sum(x => x.KM);
             ViewBag.Brand = _carBrandService.TGetAll ().Count();
+            ViewBag.Name = _testimonialService.TGetAll().Count();
             return View();
         }
     }

@@ -35,7 +35,7 @@ namespace Cental.WebUI.Controllers
             return RedirectToAction("Index");
             
         }
-        //AutoMapper ve Dto kullanılacak !
+      
         public IActionResult UpdateService(int id)
         {
             var Update = _serviceService.TGetById(id);
