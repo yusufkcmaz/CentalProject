@@ -55,7 +55,10 @@ namespace Cental.BusinessLayer.Extensions
             Services.AddScoped<IUserSocialDal, EfUserSocialDal>();
 
             Services.AddScoped<ISendMessageService , SendMessageManager>();
-            Services.AddScoped<ISendMessageDal , EfSendMessageDal>();   
+            Services.AddScoped<ISendMessageDal , EfSendMessageDal>();
+
+            Services.AddScoped<IBookingService, BookingManager>();
+            Services.AddScoped<IBookingDal , EfBookingDal>();
 
             //Services.AddScoped<IMapper , Mapper>();
             //Social media eklenecek

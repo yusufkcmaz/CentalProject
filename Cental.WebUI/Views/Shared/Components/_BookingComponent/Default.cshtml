@@ -1,44 +1,53 @@
-﻿
+﻿@* @model List<ResultCarDto>
+ *@@{
+    // var carList = (SelectList)ViewBag.CarList;
+
+}
 
 @* 
     _BookingComponent *@
 
 <div class="bg-secondary rounded p-5"> 
     <h4 class="text-white mb-4">Araç rezervasyonu</h4>
-    <form method="post" asp-action="Default" >
+
+    //
+    <form method="post" asp-area="User" asp-controller="Booking" asp-action="FormBooking" >
         <div class="row g-3"> 
             <div class="col-12">
-                <select class="form-select" name="CarId">
-                    <option selected>Select Your Car type</option>
-                    @foreach(var car in ViewBag.Cars as SelectList)
+                <select class="form-select" name="CarId" asp-items="@(ViewBag.CarList)">
+                    <option selected>Araç seçin</option>
+                @*     @foreach(var item in Model.)
                     {
 
                    
-                     <option value="@car.Value">@car</option> 
-                    }
+                     <option value="@car.Value">@car.Text</option> 
+                    } *@
                 </select>
             </div>
+
             <div class="col-12">
                 <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                         <span class="fas fa-map-marker-alt"></span> <span class="ms-1">Pick Up</span>
                     </div>
-                    <input class="form-control" type="text" placeholder="Enter a City or Airport" aria-label="Enter a City or Airport">
+                    <input class="form-control" type="text" placeholder="Şehir Giriniz" aria-label="Şehir Giriniz">
                 </div>
             </div>
+
             <div class="col-12">
-                <a href="#" class="text-start text-white d-block mb-2">Need a different drop-off location?</a>
+                <a href="#" class="text-start text-white d-block mb-2"> Aracı Nereye Teslim Etmek istersiniz </a>
                 <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                         <span class="fas fa-map-marker-alt"></span><span class="ms-1">Drop off</span>
                     </div>
-                    <input class="form-control" type="text" placeholder="Enter a City or Airport" aria-label="Enter a City or Airport">
+                    <input class="form-control" type="text" placeholder="Şehir ve Bayi seçiniz " aria-label="Şehir ve Bayi seçiniz">
                 </div>
             </div>
+
             <div class="col-12">
                 <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                        <span class="fas fa-calendar-alt"></span><span class="ms-1">Pick Up</span>
+                        <span class="fas fa-calendar-alt"></span><span class="ms-1">Teslim Alma</span>
                     </div>
                     <input class="form-control" type="date">
                     <select class="form-select ms-3" aria-label="Default select example">
