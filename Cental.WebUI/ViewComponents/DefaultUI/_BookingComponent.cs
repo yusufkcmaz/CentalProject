@@ -6,18 +6,18 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Cental.WebUI.ViewComponents.DefaultUI
 {
-    public class _BookingComponent(ICarService _carService ) : ViewComponent
+    public class _BookingComponent(ICarService _carService, IBookingService _bookingService) : ViewComponent
     {
         public IViewComponentResult Invoke()
 
         {
             var car = _carService.TGetAll();
-            ViewBag.CarList =car.Select(x=> new SelectListItem
+            ViewBag.CarList = car.Select(x => new SelectListItem
             {
-                Text = x.Brand.BrandName + " " + x.ModelName , 
+                Text = x.Brand.BrandName + " " + x.ModelName,
                 Value = x.CarId.ToString()
             }).ToList();
-            return View(car);
+            return View(new Booking());
 
         }
 

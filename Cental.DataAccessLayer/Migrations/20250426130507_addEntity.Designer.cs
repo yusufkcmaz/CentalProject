@@ -4,6 +4,7 @@ using Cental.DataAccessLayer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cental.DataAccessLayer.Migrations
 {
     [DbContext(typeof(CentalContext))]
-    partial class CentalContextModelSnapshot : ModelSnapshot
+    [Migration("20250426130507_addEntity")]
+    partial class addEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -234,8 +237,9 @@ namespace Cental.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookingId"));
 
-                    b.Property<int>("CarId")
-                        .HasColumnType("int");
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DropOffDate")
                         .HasColumnType("datetime2");
@@ -259,9 +263,11 @@ namespace Cental.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("BookingId");
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("CarId");
+                    b.HasKey("BookingId");
 
                     b.ToTable("Bookings");
                 });
@@ -615,17 +621,6 @@ namespace Cental.DataAccessLayer.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("Cental.EntityLayer.Entities.Booking", b =>
-                {
-                    b.HasOne("Cental.EntityLayer.Entities.Car", "Car")
-                        .WithMany()
-                        .HasForeignKey("CarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Car");
                 });
 
             modelBuilder.Entity("Cental.EntityLayer.Entities.Car", b =>

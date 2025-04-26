@@ -1,8 +1,6 @@
-﻿@* @model List<ResultCarDto>
- *@@{
-    // var carList = (SelectList)ViewBag.CarList;
+﻿@model Booking
 
-}
+
 
 @* 
     _BookingComponent *@
@@ -10,74 +8,100 @@
 <div class="bg-secondary rounded p-5"> 
     <h4 class="text-white mb-4">Araç rezervasyonu</h4>
 
-    //
-    <form method="post" asp-area="User" asp-controller="Booking" asp-action="FormBooking" >
-        <div class="row g-3"> 
+    <form id="bookingForm" method="post" asp-controller="Booking" asp-action="CreateReservation">
+        <div class="row g-3">
+            <!-- Araç Seçimi -->
             <div class="col-12">
                 <select class="form-select" name="CarId" asp-items="@(ViewBag.CarList)">
                     <option selected>Araç seçin</option>
-                @*     @foreach(var item in Model.)
-                    {
-
-                   
-                     <option value="@car.Value">@car.Text</option> 
-                    } *@
                 </select>
             </div>
 
+            <!-- Teslim Alış Lokasyonu -->
             <div class="col-12">
                 <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                        <span class="fas fa-map-marker-alt"></span> <span class="ms-1">Pick Up</span>
+                        <span class="fas fa-map-marker-alt"></span> <span class="ms-1">Teslim Al</span>
                     </div>
-                    <input class="form-control" type="text" placeholder="Şehir Giriniz" aria-label="Şehir Giriniz">
+                    <input class="form-control" name="PickUpLO" type="text" placeholder="Şehir Giriniz" />
                 </div>
             </div>
 
+            <!-- Teslim Etme Lokasyonu -->
+        
+         
             <div class="col-12">
                 <a href="#" class="text-start text-white d-block mb-2"> Aracı Nereye Teslim Etmek istersiniz </a>
                 <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                         <span class="fas fa-map-marker-alt"></span><span class="ms-1">Drop off</span>
                     </div>
-                    <input class="form-control" type="text" placeholder="Şehir ve Bayi seçiniz " aria-label="Şehir ve Bayi seçiniz">
+                    <input class="form-control" name="DropOffLO" type="text" placeholder="Şehir ve Bayi seçiniz " />
                 </div>
             </div>
-
+            
+            <!-- Teslim Alma Tarihi ve Saati -->
             <div class="col-12">
                 <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                         <span class="fas fa-calendar-alt"></span><span class="ms-1">Teslim Alma</span>
                     </div>
-                    <input class="form-control" type="date">
-                    <select class="form-select ms-3" aria-label="Default select example">
-                        <option selected>12:00AM</option>
-                        <option value="1">1:00AM</option>
-                        <option value="2">2:00AM</option>
-                        <option value="3">3:00AM</option>
-                        <option value="4">4:00AM</option>
-                        <option value="5">5:00AM</option>
-                        <option value="6">6:00AM</option>
-                        <option value="7">7:00AM</option>
-                    </select>
+                    <input class="form-control" name="PickUpDate" type="date" />
+                    <input class="form-control ms-3" name="PickUpTime" type="time" />
                 </div>
             </div>
+
+            <!-- Teslim Etme Tarihi ve Saati -->
             <div class="col-12">
                 <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                         <span class="fas fa-calendar-alt"></span><span class="ms-1">Drop off</span>
                     </div>
-                    <input class="form-control" type="date">
-                    <select class="form-select ms-3" aria-label="Default select example">
-                        <option selected>12:00AM</option>
-                        <option value="1">1:00AM</option>
-                    
-                    </select>
+                    <input class="form-control" name="DropOffDate" type="date" />
+                    <input class="form-control ms-3" name="DropOffTime" type="time" />
                 </div>
             </div>
+
             <div class="col-12">
                 <button class="btn btn-light w-100 py-2" type="submit">Rezervasyon yap</button>
             </div>
         </div>
     </form>
+
+    @if (TempData["BookingSummary"] != null)
+    {
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Rezervasyon Alındı!',
+                html: '<b>@TempData["BookingSummary"]</b><br>Detaylar en kısa sürede tarafınıza iletilecektir.',
+                confirmButtonText: 'Tamam',
+                confirmButtonColor: '#3085d6'
+            });
+        </script>
+    }
+
+
+
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.getElementById("bookingForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Rezervasyonu onaylıyor musunuz?',
+            text: "Bilgileriniz doğruysa lütfen onaylayın.",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Evet, onaylıyorum',
+            cancelButtonText: 'İptal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+        });
+    });
+</script>
