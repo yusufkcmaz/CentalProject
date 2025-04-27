@@ -1,9 +1,11 @@
 ﻿@using Cental.EntityLayer.Entities
 @model IEnumerable<Booking>
 @{
-    ViewData["Title"] = "Kiralama Sayfası";
+    ViewData["Title"] = "Index";
     Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
 }
+
+
 
 
 
@@ -100,6 +102,5 @@
         updateStatus(bookingId, status);
     });
 </script>
-
 
 

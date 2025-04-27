@@ -1,11 +1,9 @@
 ﻿@using Cental.EntityLayer.Entities
 @model IEnumerable<Booking>
 @{
-    ViewData["Title"] = "Kiralama Sayfası";
-    Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
+    ViewData["Title"] = "Rezervasyonlar";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
-
 
 <br />
 <br />
@@ -35,20 +33,20 @@
                 <td>@booking.DropOffDate.ToString("dd.MM.yyyy") @booking.DropOffTime</td>
                 <td>@booking.PickUpLO</td>
                 <td>@booking.DropOffLO</td>
-                @*                 //<td id="status-@booking.BookingId">@booking.Status</td>
+@*                 //<td id="status-@booking.BookingId">@booking.Status</td>
  *@                <td id="status-@booking.BookingId" style="font-weight: bold;">@booking.Status</td>
 
                 <td>
                     <div class="btn-group" role="group" aria-label="Rezervasyon Durumu">
                         <!-- Onay Bekliyor Butonu -->
-                        <button type="button" class="btn btn-warning status-button " style="margin-right:20px;"
+                        <button type="button" class="btn btn-warning status-button "style="margin-right:20px;"
                                 data-status="Onay Bekliyor"
                                 data-booking-id="@booking.BookingId"
                         @(booking.Status == "Onay Bekliyor" ? "disabled" : "")>
                             Onay Bekliyor
 
-                        </button>
-                        <br />
+                        </button> 
+                     <br />
                         <!-- Onaylandı Butonu -->
                         <button type="button" class="btn btn-success status-button" style="margin-right:20px;"
                                 data-status="Onaylandı"
@@ -100,6 +98,3 @@
         updateStatus(bookingId, status);
     });
 </script>
-
-
-

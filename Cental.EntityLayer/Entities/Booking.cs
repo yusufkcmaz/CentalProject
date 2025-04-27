@@ -17,7 +17,7 @@ namespace Cental.EntityLayer.Entities
         public DateTime DropOffDate { get; set; }
         public string PickUpTime { get; set; }  
         public string DropOffTime { get; set; }
-
+        public string Status { get; set; }
         public int CarId { get; set; }
         public virtual Car Car { get; set; }
 
