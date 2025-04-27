@@ -31,6 +31,7 @@ namespace Cental.DataAccessLayer.Context
 
         public DbSet<SendMessage> SendMessages { get; set; }    
         public DbSet<Booking> Bookings  { get; set; }    
+        public DbSet<LayoutInfo> layouts  { get; set; }    
 
 
 
