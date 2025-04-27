@@ -1,4 +1,5 @@
-﻿using Cental.DataAccessLayer.Context;
+﻿using Cental.DataAccessLayer.Abstract;
+using Cental.DataAccessLayer.Context;
 using Cental.DataAccessLayer.Repositories;
 using Cental.EntityLayer.Entities;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Cental.DataAccessLayer.Concrete
 {
-    public class EfLayoutInfoDal : GenericRepository<LayoutInfo>
+    public class EfLayoutInfoDal : GenericRepository<LayoutInfo> , ILayoutInfoDal
     {
         public EfLayoutInfoDal(CentalContext context) : base(context)
         {

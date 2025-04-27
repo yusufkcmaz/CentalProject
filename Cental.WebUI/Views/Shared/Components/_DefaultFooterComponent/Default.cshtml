@@ -1,4 +1,4 @@
-﻿
+﻿@model LayoutInfo
 @*
    _DefaultFooterComponent
 *@
@@ -9,8 +9,8 @@
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item d-flex flex-column">
                     <div class="footer-item">
-                        <h4 class="text-white mb-4">About Us</h4>
-                        <p class="mb-3">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit.</p>
+                        <h4 class="text-white mb-4">Kısaca Biz</h4>
+                        <p class="mb-3"> @Model.AboutDescription</p>
                     </div>
                     <div class="position-relative">
                         <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item d-flex flex-column">
-                    <h4 class="text-white mb-4">Quick Links</h4>
+                    <h4 class="text-white mb-4">Site Haritası</h4>
                     <a href="/AboutNav/Index/"><i class="fas fa-angle-right me-2"></i> Hakkımızda</a>
                     <a href="/Cars/Index/"><i class="fas fa-angle-right me-2"></i> Araçlar</a>
 
@@ -32,31 +32,27 @@
                 <div class="footer-item d-flex flex-column">
                     <h4 class="text-white mb-4">Çalışma saatleri</h4>
                     <div class="mb-3">
-                        <h6 class="text-muted mb-0">Pazartesi - Cuma:</h6>
-                        <p class="text-white mb-0">09.00 am to 07.00 pm</p>
+                        <h6 class="text-muted mb-0">Haftaiçi:</h6>
+                        <p class="text-white mb-0">@Model.WeekdayHours</p>
                     </div>
                     <div class="mb-3">
-                        <h6 class="text-muted mb-0">Cumartesi:</h6>
-                        <p class="text-white mb-0">10.00 am to 05.00 pm</p>
+                        <h6 class="text-muted mb-0">Haftasonu:</h6>
+                        <p class="text-white mb-0">@Model.SaturdayHours</p>
                     </div>
-                    <div class="mb-3">
-                        <h6 class="text-muted mb-0">Tatil:</h6>
-                        <p class="text-white mb-0">Pazar günü</p>
-                    </div>
+              
                 </div>
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item d-flex flex-column">
                     <h4 class="text-white mb-4">İletişim Bilgileri</h4>
-                    <a href="#"><i class="fa fa-map-marker-alt me-2"></i>İstanbul / Beşiktaş</a>
-                    <a href="mailto:info@example.com"><i class="fas fa-envelope me-2"></i> info@example.com</a>
-                    <a href="tel:+012 345 67890"><i class="fas fa-phone me-2"></i> +012 345 67890</a>
-                    <a href="tel:+012 345 67890" class="mb-3"><i class="fas fa-print me-2"></i> +012 345 67890</a>
+                    <a href="#"><i class="fa fa-map-marker-alt me-2"></i>@Model.Address</a>
+                    <a href=""><i class="fas fa-envelope me-2"></i>@Model.Email</a>
+                    <a href="tel:+012 345 67890"><i class="fas fa-phone me-2"></i>@Model.PhoneNumber</a>
                     <div class="d-flex">
-                        <a class="btn btn-secondary btn-md-square rounded-circle me-3" href=""><i class="fab fa-facebook-f text-white"></i></a>
-                        <a class="btn btn-secondary btn-md-square rounded-circle me-3" href=""><i class="fab fa-twitter text-white"></i></a>
-                        <a class="btn btn-secondary btn-md-square rounded-circle me-3" href=""><i class="fab fa-instagram text-white"></i></a>
-                        <a class="btn btn-secondary btn-md-square rounded-circle me-0" href=""><i class="fab fa-linkedin-in text-white"></i></a>
+                        <a class="btn btn-secondary btn-md-square rounded-circle me-3" href="@Model.FacebookUrl"><i class="fab fa-facebook-f text-white"></i></a>
+                        <a class="btn btn-secondary btn-md-square rounded-circle me-3" href="@Model.TwitterUrl"><i class="fab fa-twitter text-white"></i></a>
+                        <a class="btn btn-secondary btn-md-square rounded-circle me-3" href="@Model.InstagramUrl"><i class="fab fa-instagram text-white"></i></a>
+                        <a class="btn btn-secondary btn-md-square rounded-circle me-0" href="@Model.LinkedinUrl"><i class="fab fa-linkedin-in text-white"></i></a>
                     </div>
                 </div>
             </div>

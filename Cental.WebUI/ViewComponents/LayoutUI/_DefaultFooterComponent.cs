@@ -1,12 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Cental.BusinessLayer.Abstract;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Cental.WebUI.ViewComponents.LayoutUI
 {
-    public class _DefaultFooterComponent : ViewComponent
+    public class _DefaultFooterComponent(ILayoutInfoService _ınfoService) : ViewComponent
     {
         public IViewComponentResult Invoke()
         {
-            return View();
+            var values = _ınfoService.TGetAll().FirstOrDefault();
+
+            return View(values);
         }
+
+
+
     }
 }

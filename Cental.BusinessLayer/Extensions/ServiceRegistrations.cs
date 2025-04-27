@@ -60,6 +60,11 @@ namespace Cental.BusinessLayer.Extensions
             Services.AddScoped<IBookingService, BookingManager>();
             Services.AddScoped<IBookingDal , EfBookingDal>();
 
+            Services.AddScoped<ILayoutInfoService, LayoutInfoManager >();
+            Services.AddScoped<ILayoutInfoDal, EfLayoutInfoDal >();
+
+
+
             //Services.AddScoped<IMapper , Mapper>();
             //Social media eklenecek
 
