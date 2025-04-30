@@ -76,7 +76,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseStatusCodePagesWithReExecute("/ErrorPage/NotFound404");
-
+//app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication(); // SÝSTEME --> KAYIT KONTROLÜ.
 app.UseAuthorization(); // SÝSTEMDE --> YETKÝ KONTROLÜ.

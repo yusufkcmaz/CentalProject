@@ -1,0 +1,41 @@
+﻿@using Cental.EntityLayer.Entities
+@model SendMessage
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Mesaj Detayı</h3>
+
+
+<div class="container my-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h4 class="mb-0"><i class="bi bi-envelope-fill me-2"></i> Mesaj Detayı</h4>
+            <a asp-action="Index" class="btn btn-light btn-sm">
+                <i class="bi bi-arrow-left-circle me-1"></i> Geri
+            </a>
+        </div>
+        <div class="card-body">
+            <dl class="row mb-0">
+                <dt class="col-sm-3 fw-semibold">ID</dt>
+                <dd class="col-sm-9">@Model.SendMessageId</dd>
+
+                <dt class="col-sm-3 fw-semibold">İsim</dt>
+                <dd class="col-sm-9">@Model.Name</dd>
+
+                <dt class="col-sm-3 fw-semibold">Email</dt>
+                <dd class="col-sm-9">
+                    <a href="mailto:@Model.Email">@Model.Email</a>
+                </dd>
+
+                <dt class="col-sm-3 fw-semibold">Konu</dt>
+                <dd class="col-sm-9">@Model.Subject</dd>
+
+                <dt class="col-sm-3 fw-semibold">Mesaj</dt>
+                <dd class="col-sm-9">@Model.Message</dd>
+                            
+            </dl>
+        </div>
+    </div>
+</div>

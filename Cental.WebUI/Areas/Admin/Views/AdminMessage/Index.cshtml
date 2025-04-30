@@ -1,0 +1,67 @@
+﻿@using Cental.EntityLayer.Entities
+@model List<SendMessage>
+
+@{
+    ViewData["Title"] = "Gelen Mesajlar";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="my-4 text-primary">📩 Gelen Mesajlar</h2>
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered text-center align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">İsim</th>
+                <th scope="col">Email</th>
+                <th scope="col">Konu</th>
+                <th scope="col">Mesaj</th>
+                <th scope="col">İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.SendMessageId</td>
+                        <td>@item.Name</td>
+                        <td>@item.Email</td>
+                        <td>@item.Subject</td>
+                        <td>@item.Message</td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.SendMessageId"
+                               class="btn btn-sm btn-info">Detay</a>
+
+                            <a asp-action="Edit" asp-route-id="@item.SendMessageId"
+                               class="btn btn-sm btn-warning">Düzenle</a>
+
+                            <form asp-action="Delete" asp-route-id="@item.SendMessageId"
+                                  method="post" class="d-inline"
+                                  onsubmit="return confirm('Silmek istediğine emin misin?');">
+                                <button type="submit" class="btn btn-sm btn-danger">Sil</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-muted">Hiç mesaj bulunamadı.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@functions {
+    public string Shorten(string text, int maxLength)
+    {
+        if (string.IsNullOrEmpty(text)) return text;
+        return text.Length > maxLength
+            ? text.Substring(0, maxLength) + "..."
+            : text;
+    }
+}
