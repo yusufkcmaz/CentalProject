@@ -68,9 +68,24 @@
                         <a href="/Contact/Index" class="nav-item nav-link">İletişim</a>
                         <a href="/Cars/Index" class="nav-item nav-link">Tüm araçlar</a>
                     </div>
-                    <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Hadi Başlayalım</a>
-                    <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Giriş yap</a>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-area="User" asp-controller="MyProfile" asp-action="Index" class="btn btn-outline-dark rounded-pill py-2 px-4 ms-2">Profil</a>
+                        <a href="/Login/Logout" class="btn btn-danger rounded-pill py-2 px-4 ms-2">Çıkış Yap</a>
+                    }
+                    else
+                    {
+                        <a href="/Login/Index" class="btn btn-primary rounded-pill py-2 px-4 ms-2">Giriş Yap</a>
+                        <a href="/Register/Signup" class="btn btn-secondary rounded-pill py-2 px-4 ms-2">Kayıt Ol</a>
+                    }
+
+
+                   @*  <a href="/Register/Signup" class="btn btn-primary rounded-pill py-2 px-4">Kayıt ol</a>
+                    <a href="/Login/Index" class="btn btn-primary rounded-pill py-2 px-4">Giriş yap</a>
+ *@
                 </div>
+
             </nav>
         </div>
     </div>

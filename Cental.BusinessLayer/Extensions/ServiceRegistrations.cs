@@ -63,6 +63,10 @@ namespace Cental.BusinessLayer.Extensions
             Services.AddScoped<ILayoutInfoService, LayoutInfoManager >();
             Services.AddScoped<ILayoutInfoDal, EfLayoutInfoDal >();
 
+            Services.AddScoped<IUserService , UserManager >();
+            Services.AddScoped<IUserDal , EfUserDal >();
+
+
 
 
             //Services.AddScoped<IMapper , Mapper>();

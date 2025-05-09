@@ -1,0 +1,117 @@
+﻿@model Cental.DtoLayer.UserDtos.ProfileEditDto
+@{
+    ViewData["Title"] = "UpdateProfile";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+<style>
+    body {
+        background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    }
+
+    .card {
+        border-radius: 12px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        color: white;
+        font-weight: bold;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+
+    .form-control {
+        border-radius: 8px;
+    }
+
+    .profile-img {
+        border: 3px solid #007bff;
+        transition: transform 0.3s ease-in-out;
+    }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8">
+            <div class="card shadow">
+                <div class="card-header text-center rounded-top">
+                    <h4 class="mb-0">Profil Bilgilerini Güncelle</h4>
+                </div>
+                <div class="card-body p-4">
+
+                    <form asp-action="UpdateProfile" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Ad</label>
+                            <input asp-for="FirstName" class="form-control" placeholder="Adınızı girin" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Soyad</label>
+                            <input asp-for="LastName" class="form-control" placeholder="Soyadınızı girin" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">E-posta</label>
+                            <input asp-for="Email" class="form-control" placeholder="E-posta adresinizi girin" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+ 
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Telefon</label>
+                            <input asp-for="PhoneNumber" class="form-control" placeholder="Telefon numaranızı girin" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div> 
+
+
+                        <div class="mb-3 text-center">
+                            <label class="form-label fw-bold">Profil Fotoğrafı</label><br />
+                            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                            {
+                                <img src="@Model.ImageUrl" alt="Mevcut Fotoğraf" class="rounded-circle profile-img mb-2" width="120" height="120" />
+                            }
+                            <input asp-for="ImageFile" type="file" class="form-control" />
+                            <span asp-validation-for="ImageFile" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Yeni Şifre (Opsiyonel)</label>
+                            <input asp-for="CurrentPassword" class="form-control" type="password" placeholder="Yeni şifrenizi girin" />
+                            <small class="text-muted">Şifreyi değiştirmek istemiyorsan bu alanı boş bırak.</small>
+                            <span asp-validation-for="CurrentPassword" class="text-danger"></span>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-success py-2 px-4 rounded-pill shadow-sm">
+                                <i class="bi bi-check-circle fs-5"></i> Kaydet
+                            </button>
+                            <a href="@Url.Action("Index", "MyProfile", new { area = "User" })" class="btn btn-secondary ms-2 py-2 px-4 rounded-pill shadow-sm">
+                                <i class="bi bi-x-circle fs-5"></i> İptal
+                            </a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

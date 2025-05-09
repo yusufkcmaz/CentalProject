@@ -1,0 +1,86 @@
+﻿@model Cental.DtoLayer.UserDtos.ProfileEditDto
+
+@{
+    ViewData["Title"] = "Profilim";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+<style>
+    body {
+        background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    }
+
+    .profile-img {
+        border: 4px solid #007bff;
+        transition: transform 0.3s ease-in-out;
+    }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+    .card {
+        border-radius: 12px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8">
+            <!-- Profil Başlığı -->
+            <div class="text-center mb-4">
+                <h3 class="fw-bold" style="font-family: 'Poppins', sans-serif; color: #333;">Profil Bilgilerim</h3>
+            </div>
+
+            <!-- Profil Kartı -->
+            <div class="card p-4">
+                <div class="text-center mb-4">
+                    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                    {
+                        <img src="@Model.ImageUrl" class="rounded-circle shadow-lg profile-img" width="160" height="160" alt="Profil Fotoğrafı" />
+                    }
+                    else
+                    {
+                        <img src="/images/default-profile.png" class="rounded-circle shadow-lg profile-img" width="160" height="160" alt="Varsayılan Profil" />
+                    }
+                </div>
+
+                <!-- Profil Bilgileri -->
+                <div class="row mb-3">
+                    <label class="col-md-4 fw-bold text-dark fs-5"><i class="bi bi-person-fill"></i> Adı:</label>
+                    <div class="col-md-8 fs-5 text-dark">@Model.FirstName</div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-md-4 fw-bold text-dark fs-5"><i class="bi bi-person-fill"></i> Soyadı:</label>
+                    <div class="col-md-8 fs-5 text-dark">@Model.LastName</div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-md-4 fw-bold text-dark fs-5"><i class="bi bi-envelope-fill"></i> E-posta:</label>
+                    <div class="col-md-8 fs-5 text-dark">@Model.Email</div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-md-4 fw-bold text-dark fs-5"><i class="bi bi-phone-fill"></i> Telefon:</label>
+                    <div class="col-md-8 fs-5 text-dark">@Model.PhoneNumber</div>
+                </div>
+
+                <!-- Profil Güncelleme Butonu -->
+                <div class="text-center mt-4">
+                    <a href="@Url.Action("UpdateProfile", "MyProfile", new { area = "User" })" class="btn btn-primary py-2 px-4 rounded-pill shadow-sm">
+                        <i class="bi bi-pencil-square fs-5"></i> Profilimi Güncelle
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

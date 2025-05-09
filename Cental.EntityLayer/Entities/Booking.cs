@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cental.EntityLayer.Entities
 {
-    public class Booking
+    public class Booking 
     {
         public int BookingId { get; set; }
        
@@ -20,6 +20,10 @@ namespace Cental.EntityLayer.Entities
         public string Status { get; set; }
         public int CarId { get; set; }
         public virtual Car Car { get; set; }
+        //migration 
+        public int UserId { get; set; } 
+        public virtual AppUser AppUser { get; set; }
+
 
     }
 

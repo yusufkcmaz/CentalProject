@@ -15,10 +15,6 @@ namespace Cental.WebUI.Controllers
             return View();
         }
 
-        
-
-
-
 
 
         [HttpPost]
@@ -38,6 +34,8 @@ namespace Cental.WebUI.Controllers
             {
                 return Redirect(returnUrl);                     
             }
+
+
             
             //Kullanıcı Rolüne göre bulma ve yönlendirme.
 
@@ -59,7 +57,7 @@ namespace Cental.WebUI.Controllers
 
                 if (role == "User")
                 {
-                    return RedirectToAction("Index", "MyProfile ", new { area = "User" });
+                    return RedirectToAction("Index", "MyProfile", new { area = "User" });
                 }
 
                 
@@ -70,15 +68,10 @@ namespace Cental.WebUI.Controllers
         
 
 
-
-
-
-
-
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index" ,"Default");
+            return RedirectToAction("Index" ,"Defaultuı");
         }
     }
 }
