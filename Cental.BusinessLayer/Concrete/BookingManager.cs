@@ -4,6 +4,7 @@ using Cental.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +18,7 @@ namespace Cental.BusinessLayer.Concrete
         {
             _bookingDal = bookingDal;
         }
+                      
 
         public void TCreate(Booking entity)
         {
@@ -41,6 +43,16 @@ namespace Cental.BusinessLayer.Concrete
         public void TUpdate(Booking entity)
         {
             _bookingDal.Update(entity);
+        }
+
+        public List<Booking> GetBookingByStatus(string status)
+        {
+            return _bookingDal.GetBookingByStatus(status);
+        }
+
+        public List<Booking> GetBookingByUserId(int userId)
+        {
+            return _bookingDal.GetBookingByUserId(userId);
         }
     }
 }

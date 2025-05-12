@@ -9,5 +9,7 @@ namespace Cental.BusinessLayer.Abstract
 {
     public interface IBookingService : IGenericService<Booking>
     {
+        List<Booking> GetBookingByUserId(int userId);  
+        List<Booking> GetBookingByStatus(string status);
     }
 }

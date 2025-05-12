@@ -9,5 +9,8 @@ namespace Cental.DataAccessLayer.Abstract
 {
     public interface IBookingDal : IGenericDal<Booking>
     {
+        //Özel metod
+        List<Booking> GetBookingByUserId(int userId);
+        List<Booking> GetBookingByStatus(string status);
     }
 }

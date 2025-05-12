@@ -21,7 +21,7 @@ namespace Cental.EntityLayer.Entities
         public int CarId { get; set; }
         public virtual Car Car { get; set; }
         //migration 
-        public int UserId { get; set; } 
+        public int AppUserId { get; set; } 
         public virtual AppUser AppUser { get; set; }
 
 

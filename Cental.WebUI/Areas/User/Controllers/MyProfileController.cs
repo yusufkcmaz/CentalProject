@@ -12,12 +12,14 @@ namespace Cental.WebUI.Areas.User.Controllers
     public class MyProfileController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IBookingService _bookingService;
         private readonly UserManager<AppUser> _userManager;
 
-        public MyProfileController(IUserService userService, UserManager<AppUser> userManager)
+        public MyProfileController(IUserService userService, UserManager<AppUser> userManager , IBookingService bookingService)
         {
             _userService = userService;
             _userManager = userManager;
+            _bookingService = bookingService;
         }
 
 
@@ -73,15 +75,12 @@ namespace Cental.WebUI.Areas.User.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await _userManager.GetUserAsync(User); // Giriş yapan kullanıcının bilgilerini al
-                if (user != null)
+                var user = await _userManager.GetUserAsync(User); // Giriş yapan kullanıcının                 if (user != null)
                 {
-                    // Kullanıcı bilgilerini güncelle
                     user.FirstName = model.FirstName;
                     user.LastName = model.LastName;
                     user.Email = model.Email;
                     user.PhoneNumber = model.PhoneNumber;
-                    // Profil resmi yükleniyorsa
                     if (model.ImageFile != null)
                     {
                         var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", model.ImageFile.FileName);
@@ -92,7 +91,6 @@ namespace Cental.WebUI.Areas.User.Controllers
                         user.ImageUrl = "/images/" + model.ImageFile.FileName;
                     }
 
-                    // Şifre güncelleme işlemi (isteğe bağlı)
                     if (!string.IsNullOrEmpty(model.CurrentPassword))
                     {
                         var passwordResult = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.CurrentPassword);
@@ -103,7 +101,7 @@ namespace Cental.WebUI.Areas.User.Controllers
                         }
                     }
 
-                    // Kullanıcıyı güncelle
+                    
                     var result = await _userManager.UpdateAsync(user);
                     if (result.Succeeded)
                     {
@@ -118,6 +116,24 @@ namespace Cental.WebUI.Areas.User.Controllers
             }
             return View(model);
         }
+
+
+        public async Task<IActionResult> MyBookings()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Defaultuı");
+            }
+
+            var bookings = _bookingService.GetBookingByUserId(user.Id); 
+
+            return View(bookings);  
+        }
+
+
+
+
     }
 
 }

@@ -3,6 +3,7 @@ using Cental.DataAccessLayer.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -37,6 +38,7 @@ namespace Cental.BusinessLayer.Concrete
         {
             return _genericDal.GetById(id);
         }
+
 
         public void TUpdate(T entity)
         {

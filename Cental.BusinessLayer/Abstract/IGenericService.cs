@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Cental.BusinessLayer.Abstract
 {
-    //Ekleme silme işlemleri için kullanılır 
+   
     public interface IGenericService <T> where T : class
     {
 
@@ -17,5 +18,7 @@ namespace Cental.BusinessLayer.Abstract
 
         void TCreate(T entity);
         void TUpdate(T entity);
+
+        
     }
 }

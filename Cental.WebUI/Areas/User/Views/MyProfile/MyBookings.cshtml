@@ -1,0 +1,89 @@
+﻿@{
+    ViewData["Title"] = "Kiralama Geçmişim";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+@model List<Cental.EntityLayer.Entities.Booking>
+
+<style>
+    body {
+        background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    }
+
+    .card {
+        border-radius: 12px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        background: linear-gradient(135deg, ##010d85, ##010d85);
+        color: white;
+        font-weight: bold;
+    }
+
+    .table {
+        border-radius: 12px;
+    }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: center;
+        }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f2f2f2;
+    }
+
+    .table-bordered {
+        border: 1px solid #dee2e6;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #343a40;
+    }
+</style>
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-12">
+            <div class="card shadow">
+                <div class="card-header text-center rounded-top">
+                    <h4 class="mb-0">Kiralama Geçmişim</h4>
+                </div>
+                <div class="card-body p-4">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Araç</th>
+                                <th>Alış Yeri</th>
+                                <th>Alış Tarihi</th>
+                                <th>Alış Saati</th>
+                                <th>Bırakış Yeri</th>
+                                <th>Bırakış Tarihi</th>
+                                <th>Bırakış Saati</th>
+                                <th>Durum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var booking in Model)
+                            {
+                                <tr>
+                                    <td>@booking.Car.Brand.BrandName @booking.Car.ModelName</td>
+                                    <td>@booking.PickUpLO</td>
+                                    <td>@booking.PickUpDate.ToShortDateString()</td>
+                                    <td>@booking.PickUpTime</td>
+                                    <td>@booking.DropOffLO</td>
+                                    <td>@booking.DropOffDate.ToShortDateString()</td>
+                                    <td>@booking.DropOffTime</td>
+                                    <td>@booking.Status</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
