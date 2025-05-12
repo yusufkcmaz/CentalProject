@@ -2,11 +2,13 @@
 using Cental.BusinessLayer.Abstract;
 using Cental.DtoLayer.TestimonialDtos;
 using Cental.EntityLayer.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cental.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdminTestimonialController(IMapper _mapper, ITestimonialService _testimonialService) : Controller
     {
         public IActionResult Index()

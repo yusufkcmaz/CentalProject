@@ -1,12 +1,14 @@
 ﻿using Cental.BusinessLayer.Abstract;
 using Cental.DataAccessLayer.Abstract;
 using Cental.EntityLayer.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Permissions;
 
 namespace Cental.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdminMessageController(ISendMessageService _messageService , ISendMessageDal _sendMessage) : Controller
     {
         public IActionResult Index()

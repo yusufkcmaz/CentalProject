@@ -8,7 +8,8 @@ namespace Cental.WebUI.Areas.Manager.Controllers
 {
 
     [Area("Manager")]
-    [Authorize(Roles = "Admin")] //
+    [Authorize(Roles = "Manager")]
+
 
     public class FeatureController(IFeatureService _featureService ) : Controller
     {

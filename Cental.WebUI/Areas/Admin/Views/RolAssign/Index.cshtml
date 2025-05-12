@@ -1,0 +1,60 @@
+﻿@using Cental.DtoLayer.UserDtos
+@model List<ResultUserDto>
+@{
+    ViewData["Title"] = "Kullanıcılar";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    int count = 0;
+}
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>#</th>
+        <th>Ad Soyad</th>
+        <th>Kullanıcı Adı</th>
+        <th>Email</th>
+        <th>Rol Ata</th>
+        <th>Roller</th>
+        <th>Rol Sil</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.FullName</td>
+            <td>@item.UserName</td>
+            <td>@item.Email</td>
+            <td>
+            @foreach (var role in item.Roles)
+            {
+                    <span class="badge badge-info">@role</span>  <br />
+            }
+            </td>
+
+
+            <td>
+                <a asp-action="AssignRol" asp-route-id="@item.Id" class="btn btn-primary">
+                    <i class="fa fa-user-plus"></i> Rol Ata
+                </a>
+            </td>
+            <td>
+                <form asp-action="RemoveRole" method="post">
+                    <input type="hidden" name="userId" value="@item.Id" />
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Bu rolü silmek istediğinizden emin misiniz?')">
+                        <i class="fa fa-times-circle"></i> Rolü Sil
+                    </button>
+                </form>
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+

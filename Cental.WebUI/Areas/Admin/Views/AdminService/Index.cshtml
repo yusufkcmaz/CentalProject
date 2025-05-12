@@ -1,0 +1,42 @@
+﻿@using Cental.EntityLayer.Entities
+@model List<Service>
+@{
+    ViewData["Title"] = "Hizmetlerimiz";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table table-borderless">
+    <tr>
+        <th>#</th>
+        <th>Başlık</th>
+        <th>Açıklaması</th>
+        <th>Görsel İcon</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+
+    {
+        <tr>
+            <td>@item.ServiceID</td>
+            <td>@item.Title</td>
+            <td>@item.Description</td>
+            <td>@item.Icon</td>
+
+            <td><a asp-action="UpdateService" asp-route-id="@item.ServiceID" class="btn btn-danger">Güncelle</a> </td>
+
+            <td><a asp-action="DeleteService" asp-route-id="@item.ServiceID" class="btn btn-success">Sil</a> </td>
+        </tr>
+    }
+
+
+
+
+</table>
+<a asp-action="AddService" asp-controller="AdminService" class="btn btn-primary">Servis Ekle</a>
+
+
+

@@ -1,0 +1,48 @@
+﻿@using Cental.EntityLayer.Entities
+@model List<Car>
+@{
+    ViewData["Title"] = "ARABALAR";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    int count = 0;
+}
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>#</th>
+        <th>Model Adı</th>
+        <th>Model Yılı</th>
+        <th>Kilometre</th>
+        <th>Marka</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.Brand.BrandName</td>
+            <td>@item.ModelName</td>
+            <td>@item.Year</td>
+            <td>@item.KM</td>
+            
+
+            <td><a asp-action="DeleteCar" asp-route-id="@item.CarId" 
+             class="btn btn-danger"><i class="fa fa-trash"></i>siL</a> </td>
+             
+            <td><a asp-action="UpdateCar" asp-route-id="@item.CarId" 
+             class="btn btn-info"><i class=" fa fa-pen"></i>Güncelle</a> </td>
+
+        </tr>
+    }
+
+</table>
+<a asp-action="CreateCarBrand" asp-controller="AdminCarBrand" class="btn btn-primary">Yeni Araba Ekle</a>
+
+
+

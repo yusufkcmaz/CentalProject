@@ -1,0 +1,36 @@
+﻿@using Cental.DtoLayer.AboutDtos
+@model List<ResultAboutDto>
+@{
+    ViewData["Title"] = "Hakkımızda";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h3>Hakkımızda </h3>
+
+
+        
+<table class="table table-borderless">
+
+    <tr>
+        <th>#</th>
+        <th>vizyon</th>
+        <th>misyon</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        
+       
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.AboutId</td>
+            <td>@item.Vision</td>
+            <td>@item.Mission</td>
+            <td><a asp-action="DeleteAbout" asp-route-id="@item.AboutId" class="btn btn-danger">siL</a> </td>
+            <td><a asp-action="UpdateAbout" asp-route-id="@item.AboutId" class="btn btn-danger">Güncelle</a> </td>
+           
+        </tr>
+    }
+
+</table>
+<a asp-action="CreateAbout" asp-controller="AdminAbout" class="btn btn-primary">Yeni hakkımızda ekle</a>

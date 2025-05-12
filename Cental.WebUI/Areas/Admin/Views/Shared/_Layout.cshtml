@@ -65,31 +65,74 @@
                                 Dashboard
                             </a>
 
-                            <a class="nav-link" asp-area="Admin" asp-controller="AdminProcess" asp-action="Index"  >
-                          <div class="sb-nav-link-icon"><i class="fas fa-star"></i></div>
+                            <a class="nav-link" asp-area="Admin" asp-controller="AdminProfile" asp-action="Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user-circle"></i></div>
+                                Admin Profile işlemleri
+                            </a>
+
+                            <a class="nav-link" asp-area="Admin" asp-controller="RolAssign" asp-action="Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user-circle"></i></div>
+                                Rol Atama işlemleri
+                            </a>
+
+                            <a class="nav-link" asp-area="Admin" asp-controller="Rol" asp-action="Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user-circle"></i></div>
+                                Rol Düzenleme işlemleri
+                            </a>
+
+
+                            <a class="nav-link" asp-area="Admin" asp-controller="AdminProcess" asp-action="Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
                                 İşlemler
                             </a>
 
 
-
-                            <a class="nav-link" asp-area="Admin" asp-controller="AdminTestimonial" asp-action="Index">
-                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                                Referanslarımız
-                            </a>
-
                             <a class="nav-link" asp-area="Admin" asp-controller="AdminBooking" asp-action="Index">
-                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-calendar-check"></i></div>
                                 Rezervasyon işlemleri
                             </a>
 
                             <a class="nav-link" asp-area="Admin" asp-controller="AdminMessage" asp-action="Index">
-                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>
                                 Gelen Mesaj İşlemleri
+                            </a>
+
+                            <a class="nav-link" asp-area="Admin" asp-controller="AdminAbout" asp-action="Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-info-circle"></i></div>
+                                Hakkımızda İkon isimlendirme
+                            </a>
+
+                            <a class="nav-link" asp-area="Admin" asp-controller="AdminBanner" asp-action="Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>
+                                Banner giriş ve slider işlemleri
+                            </a>
+
+                            <a class="nav-link" asp-area="Admin" asp-controller="AdminCarBrand" asp-action="Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-car"></i></div>
+                                Araç Markaları
+                            </a>
+
+                            <a class="nav-link" asp-area="Admin" asp-controller="AdminCar" asp-action="Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-car-side"></i></div>
+                                Tüm Araç listesi
+                            </a>
+
+                         
+
+                            <a class="nav-link" asp-area="Admin" asp-controller="AdminService" asp-action="Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-concierge-bell"></i></div>
+                                Cental hizmetleri
+                            </a>
+
+                            <a class="nav-link" asp-area="Admin" asp-controller="AdminTestimonial" asp-action="Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-star"></i></div>
+                                Öne Çıkan Müşteri yorumları
                             </a>
 
 
 
-                          @*   <a class="nav-link" href="~/Product/Index">
+
+                            @*   <a class="nav-link" href="~/Product/Index">
                                 <div class="sb-nav-link-icon"><i class="fas fa-star"></i></div>
                                 Ürünler
                             </a>
@@ -151,7 +194,7 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    Yummy Panel
+                    Cental Panel
                 </div>
             </nav>
         </div>
