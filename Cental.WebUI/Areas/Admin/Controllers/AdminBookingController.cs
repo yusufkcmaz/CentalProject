@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Cental.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Manager")]
+
     public class AdminBookingController(IBookingService _bookingService) : Controller
     {
         public IActionResult Index()

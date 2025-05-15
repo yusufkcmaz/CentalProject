@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 2.5rem; font-weight: 700; color: #2c3e50; text-align: center; margin: 40px 0 20px;">
+    Araç İstatistikleri
+</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Dashboard</li>
+</ol>
+<div class="row">
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-primary text-white mb-4">
+            <div class="card-body">Toplam Araç markası.</div>
+            <span class=" card-body display-7"><strong>@ViewBag.car</strong> </span>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" href="/Admin/AdminCar/">Detay Gör</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-warning text-white mb-4">
+            <div class="card-body">Araçlarla yapılan Toplam Km</div>
+            <span class=" card-body display-7"><strong>@ViewBag.Km</strong> </span>
+
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" href="#"></a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-success text-white mb-4">
+            <div class="card-body">Araç Modeli </div>
+            <span class=" card-body display-7"><strong>@ViewBag.Brand </strong> </span>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-danger text-white mb-4">
+            <div class="card-body">En pahalı Araç</div>
+            <span class=" card-body display-7"><strong>@ViewBag.expensive *</strong> </span>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" href="#"></a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+
+    
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-danger text-white mb-4">
+            <div class="card-body">Toplam yorum</div>
+            <span class=" card-body display-7"><strong>@ViewBag.command </strong> </span>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" href="/Admin/AdminTestimonial/">Detay Gör</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-success text-white mb-4">
+            <div class="card-body">Toplam Rezervasyon </div>
+            <span class=" card-body display-7"><strong>@ViewBag.booking </strong> </span>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" href="/Admin/AdminBooking/">
+                    Detay Gör
+                </a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-warning text-white mb-4">
+            <div class="card-body">Toplam kullanıcı</div>
+            <span class=" card-body display-7"><strong>@ViewBag.user</strong> </span>
+
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" href="#"></a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-success text-white mb-4">
+            <div class="card-body">Onaylanmayan Rezervasyon </div>
+            <span class=" card-body display-7"><strong>@ViewBag.Ofbookings </strong> </span>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+
+
+</div> 
+

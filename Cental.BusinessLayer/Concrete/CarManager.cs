@@ -11,7 +11,10 @@ namespace Cental.BusinessLayer.Concrete
 {
     public class CarManager(ICarDal _carDal) : ICarService
     {
-        
+        public Car GetMostExpensiveCar()
+        {
+           return _carDal.GetMostExpensiveCar();
+        }
 
         public void TCreate(Car entity)
         {

@@ -19,7 +19,16 @@ namespace Cental.DataAccessLayer.Concrete
 
         public List<Car> GetCarWithBrands() // --> Eager Loading --- >> Lazy Loading kullanımı.
         {
-          return _context.Cars.Include(x=>x.Brand).ToList();
+            return _context.Cars.Include(x => x.Brand).ToList();
+        }
+
+        public Car GetMostExpensiveCar()
+        {
+            return _context.Cars
+             .OrderByDescending(x => x.Price) 
+             .FirstOrDefault(); 
         }
     }
 }
+
+

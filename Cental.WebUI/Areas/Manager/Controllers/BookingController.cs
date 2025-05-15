@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Cental.WebUI.Areas.Manager.Controllers
 {
     [Area("Manager")]
-    [Authorize(Roles ="Manager")]
+    [Authorize(Roles = "Admin,Manager")]
     public class BookingController(IBookingService _bookingService) : Controller
     {
       

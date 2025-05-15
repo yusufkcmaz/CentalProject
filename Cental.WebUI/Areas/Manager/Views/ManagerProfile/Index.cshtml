@@ -1,0 +1,58 @@
+﻿@using Cental.DtoLayer.UserDtos
+@model ProfileEditDto
+@{
+    ViewData["Title"] = "Profil";
+    Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
+}
+
+<h1 class="text-center mb-4">Manager Profil</h1>
+
+<div class="card shadow mx-auto" style="max-width: 550px;">
+    <div class="card-header bg-white border-bottom text-center">
+        <h4 class="m-0 text-dark">Profil Güncelle</h4>
+    </div>
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+            <div class="text-center mb-4">
+                <img src="@Model.ImageUrl" class="rounded-circle border border-2"
+                     style="width: 100px; height: 100px; object-fit: cover;" alt="Profil Resmi" />
+                <div class="mt-2">
+                    <input type="file" asp-for="ImageFile" accept="image/png,image/jpg,image/jpeg" class="form-control" />
+                </div>
+                <input type="hidden" asp-for="ImageUrl" />
+            </div>
+
+
+            <div class="mb-3">
+                <label asp-for="FirstName" class="form-label">Ad</label>
+                <input asp-for="FirstName" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="LastName" class="form-label">Soyad</label>
+                <input asp-for="LastName" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" type="email" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="PhoneNumber" class="form-label">Telefon Numarası</label>
+                <input asp-for="PhoneNumber" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="CurrentPassword" class="form-label">Mevcut Şifre</label>
+                <input asp-for="CurrentPassword" type="password" class="form-control" required />
+            </div>
+
+            <div class="text-danger mb-3">
+                @Html.ValidationSummary()
+            </div>
+
+            <button type="submit" class="btn btn-outline-success w-100">Bilgileri Güncelle</button>
+        </form>
+    </div>
+</div>

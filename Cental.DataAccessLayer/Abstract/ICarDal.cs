@@ -10,5 +10,6 @@ namespace Cental.DataAccessLayer.Abstract
     public  interface ICarDal:IGenericDal<Car>
     {
         List<Car> GetCarWithBrands();
+        Car GetMostExpensiveCar();
     }
 }
