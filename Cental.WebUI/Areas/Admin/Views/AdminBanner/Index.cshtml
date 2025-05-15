@@ -1,44 +1,62 @@
 ﻿@using Cental.DtoLayer.BannerDtos
 @model List<ResultBannerDto>
 @{
-    ViewData["Title"] = "Öne Çıkan Alan";
+    ViewData["Title"] = "Öne Çıkan Alanlar";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Öne çıkan alan</h3>
-@{
-    int count = 0;
-}
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0"><i class="fas fa-bullhorn me-2"></i>Öne Çıkan Alanlar</h4>
+        </div>
 
-<table class="table table-bordered">
+        <div class="card-body p-0">
+            <table class="table table-hover table-bordered text-center mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th style="width: 50px;">#</th>
+                        <th style="width: 80px;">Resim</th>
+                        <th>Başlık</th>
+                        <th>Açıklama</th>
+                        <th style="width: 90px;">Sil</th>
+                        <th style="width: 110px;">Güncelle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int count = 0;
+                        foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td class="align-middle text-secondary">@count</td>
+                                <td class="align-middle">
+                                    <img src="@item.ImageUrl" alt="Banner Image" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;" />
+                                </td>
+                                <td class="align-middle fw-semibold text-start">@item.Title</td>
+                                <td class="align-middle text-start text-muted">@item.Description</td>
+                                <td class="align-middle">
+                                    <a asp-action="DeleteBanner" asp-route-id="@item.BannerId" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-trash"></i> Sil
+                                    </a>
+                                </td>
+                                <td class="align-middle">
+                                    <a asp-action="UpdateBanner" asp-route-id="@item.BannerId" class="btn btn-warning btn-sm">
+                                        <i class="fas fa-edit"></i> Düzenle
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
 
-    <tr>
-        <th>#</th>
-        <th>Resim</th>
-        <th>Başlık</th>
-        <th>Açıklama</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
-        <th>Ekle</th>
-
-
-
-    </tr>
-    @foreach (var item in Model)
-    {
-        count++;
-        <tr>
-            <td>@count.</td>
-            <td><img src="@item.ImageUrl" style="width:75px; height:100px;"></img></td>
-            <td>@item.Title</td>
-            <td>@item.Description</td>
-            <td><a asp-action="DeleteBanner" asp-route-id="@item.BannerId" class="btn btn-danger">siL</a> </td>
-            <td><a asp-action="UpdateBanner" asp-route-id="@item.BannerId" class="btn btn-info">Güncelle</a> </td>
-
-            <td><a asp-action="CreateBanner" asp-controller="AdminBanner" class="btn btn-primary">Yeni Öne Çıkan Alan Ekle</a></td>
-
-
-        </tr>
-    }
-
-</table>
+        <div class="card-footer text-center">
+            <a asp-action="CreateBanner" asp-controller="AdminBanner" class="btn btn-success fw-bold">
+                <i class="fas fa-plus-circle"></i> Yeni Alan Ekle
+            </a>
+        </div>
+    </div>
+</div>

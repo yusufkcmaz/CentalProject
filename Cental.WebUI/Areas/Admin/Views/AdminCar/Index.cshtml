@@ -8,19 +8,25 @@
 @{
     int count = 0;
 }
+<br />
+<br />
+<br />
 
-<table class="table table-bordered">
+<table class="table table-striped table-bordered shadow-sm">
+    <thead class="table-dark">
 
-    <tr>
-        <th>#</th>
-        <th>Model Adı</th>
-        <th>Model Yılı</th>
-        <th>Kilometre</th>
-        <th>Marka</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
+        <tr>
+            <th>#</th>
+            <th>Model Adı</th>
+            <th>Model Yılı</th>
+            <th>Kilometre</th>
+            <th>Marka</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
 
-    </tr>
+        </tr>
+
+    </thead>
     @foreach (var item in Model)
     {
         count++;
@@ -30,13 +36,17 @@
             <td>@item.ModelName</td>
             <td>@item.Year</td>
             <td>@item.KM</td>
-            
 
-            <td><a asp-action="DeleteCar" asp-route-id="@item.CarId" 
-             class="btn btn-danger"><i class="fa fa-trash"></i>siL</a> </td>
-             
-            <td><a asp-action="UpdateCar" asp-route-id="@item.CarId" 
-             class="btn btn-info"><i class=" fa fa-pen"></i>Güncelle</a> </td>
+
+            <td>
+                <a asp-action="DeleteCar" asp-route-id="@item.CarId"
+                   class="btn btn-danger"><i class="fa fa-trash"></i>siL</a>
+            </td>
+
+            <td>
+                <a asp-action="UpdateCar" asp-route-id="@item.CarId"
+                   class="btn btn-info"><i class=" fa fa-pen"></i>Güncelle</a>
+            </td>
 
         </tr>
     }

@@ -52,7 +52,7 @@ namespace Cental.WebUI.Controllers
 
                 if (role == "Manager")
                 {
-                    return RedirectToAction("Index", "MySocial", new { area = "Manager" });
+                    return RedirectToAction("Index", "MySocialController", new { area = "Manager" });
                 }
 
                 if (role == "User")

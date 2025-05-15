@@ -1,21 +1,36 @@
 ﻿@using Cental.EntityLayer.Entities
-@model CarBrand 
+@model CarBrand
 @{
-    ViewData["Title"] = "Yeni marka Oluştur";
+    ViewData["Title"] = "Yeni Marka Oluştur";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+<div class="container mt-4">
+    <div class="card shadow-lg" style="max-width: 700px; margin: auto;">
+        <div class="card-header bg-dark text-white">
+            <h4 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Yeni Marka Oluştur</h4>
+        </div>
 
+        <div class="card-body">
+            <form method="post">
+                <div class="mb-3">
+                    <label asp-for="BrandName" class="form-label fw-bold">Marka Adı</label>
+                    <input type="text" asp-for="BrandName" class="form-control" placeholder="Örneğin: Mercedes" />
+                    <span asp-validation-for="BrandName" class="text-danger"></span>
+                </div>
 
-<form method="post">
-    <label>Marka Adı</label>
-    <input type="text" asp-for="BrandName" class="form-control" />
-    <span asp-validation-for="BrandName" class="text-danger"></span>
-    <br />
-    <button class="btn btn-outline-primary"> <i class="fa fa-save"> </i>Kaydet</button>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary fw-bold">
+                        <i class="fa fa-save me-2"></i>Kaydet
+                    </button>
+                </div>
+            </form>
+        </div>
 
-
-
-
-</form>
-
+        <div class="card-footer text-center">
+            <a asp-action="Index" asp-controller="AdminCarBrand" class="btn btn-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Geri Dön
+            </a>
+        </div>
+    </div>
+</div>

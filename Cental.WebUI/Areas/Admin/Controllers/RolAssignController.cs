@@ -8,10 +8,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cental.WebUI.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+    [Authorize(Roles = "Admin")]
+   
     public class RolAssignController(UserManager<AppUser> _userManager, RoleManager<AppRole> _roleManager) : Controller
     {
-        [Area("Admin")]
-        [Authorize(Roles = "Admin")]
+       
         //->Rol Atama işlemleri. ve listeleme.
         public async Task<IActionResult> Index()
         {
@@ -45,8 +47,13 @@ namespace Cental.WebUI.Areas.Admin.Controllers
 
 
             var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user == null)
+            {
+                TempData["Error"] = "Kullanıcı bulunamadı.";
+                return RedirectToAction("Index"); // veya NotFound() ya da özel hata sayfası
+            }
 
-            ViewBag.fullName = string.Join(" ", user.FirstName, user.LastName);
+            ViewBag.fullName = $"{user.FirstName} {user.LastName}";
 
             var roles = await _roleManager.Roles.ToListAsync();
 
@@ -67,9 +74,6 @@ namespace Cental.WebUI.Areas.Admin.Controllers
             return View(assignRoleDtoList);
 
         }
-
-
-
 
         [HttpPost]
 
@@ -101,7 +105,7 @@ namespace Cental.WebUI.Areas.Admin.Controllers
                     await _userManager.RemoveFromRoleAsync(user, item.RoleName);
                 }
             }
-
+            await _userManager.UpdateAsync(user);
 
             TempData["SuccessMessage"] = "Rol atamaları güncellendi.";
             return RedirectToAction("Index");

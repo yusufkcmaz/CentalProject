@@ -6,38 +6,60 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Marka Sayfalar</h3>
-@{ 
-    int count = Model.PageSize * Model.PageNumber - (Model.PageSize );
-}
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-dark text-white">
+            <h4 class="mb-0"><i class="fas fa-car me-2"></i>Marka Listesi</h4>
+        </div>
 
-<table class="table table-bordered">
+        <div class="card-body p-0">
+            @{
+                int count = Model.PageSize * Model.PageNumber - Model.PageSize;
+            }
 
-    <tr>
-        <th>#</th>
-        <th>Marka</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
+            <table class="table table-hover table-bordered text-center mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th style="width: 50px;">#</th>
+                        <th>Marka</th>
+                        <th style="width: 120px;">Sil</th>
+                        <th style="width: 140px;">Güncelle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td class="align-middle">@count.</td>
+                            <td class="align-middle fw-semibold">@item.BrandName</td>
+                            <td class="align-middle">
+                                <a asp-action="DeleteCarBrand" asp-route-id="@item.CarBrandId"
+                                   class="btn btn-outline-danger btn-sm">
+                                    <i class="fa fa-trash me-1"></i>Sil
+                                </a>
+                            </td>
+                            <td class="align-middle">
+                                <a asp-action="UpdateCarBrand" asp-route-id="@item.CarBrandId"
+                                   class="btn btn-outline-primary btn-sm">
+                                    <i class="fa fa-pen me-1"></i>Güncelle
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
 
-    </tr>
-    @foreach (var item in Model)
-    {
-        count++;
-        <tr>
-            <td>@count.</td>
-            <td>@item.BrandName</td>
-            <td><a asp-action="DeleteCarBrand" asp-route-id="@item.CarBrandId" class="btn btn-danger"><i class="fa fa-trash"></i>siL</a> </td>
-            <td><a asp-action="UpdateCarBrand" asp-route-id="@item.CarBrandId" class="btn btn-info"><i class=" fa fa-pen"></i>Güncelle</a> </td>
+        <div class="card-footer d-flex justify-content-between align-items-center">
+            <a asp-action="CreateCarBrand" asp-controller="AdminCarBrand"
+               class="btn btn-success fw-bold">
+                <i class="fas fa-plus-circle me-1"></i>Yeni Marka Ekle
+            </a>
 
-        </tr>
-    }
-
-</table>
-
-<div class="text-center">
-    <pager asp-action="Index" asp-controller="AdminCarBrand" list="@Model" ></pager>
+            <div class="mb-0">
+                <pager asp-action="Index" asp-controller="AdminCarBrand" list="@Model"></pager>
+            </div>
+        </div>
+    </div>
 </div>
-
-<a asp-action="CreateCarBrand" asp-controller="AdminCarBrand" class="btn btn-primary">Yeni Marka Ekle</a>
-
-

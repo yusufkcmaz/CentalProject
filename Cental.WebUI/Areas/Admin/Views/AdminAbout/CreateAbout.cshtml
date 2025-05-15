@@ -1,70 +1,106 @@
 ﻿@using Cental.DtoLayer.AboutDtos
 @model CreateAboutDto
 @{
-    ViewData["Title"] = "Hakkımızda | Oluşturma Sayfası";
+    ViewData["Title"] = "Hakkımızda | Oluşturma";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-@* 
-<h3>yeni hakkımızda oluşturma Alanı</h3> *@
 
-<form method="post">
-    <label>Vizyonumuz</label>
-    <input type="text" asp-for="Vision" class="form-control accordion-item" />
-    <br />
+<br />
+<div class="card shadow mx-auto" style="max-width: 900px;">
+    <div class="card-header bg-black">
+        <h4 class="mb-0 text-white">Yeni Hakkımızda Bilgisi Ekle</h4>
+    </div>
+    <div class="card-body">
+        <form method="post" novalidate>
+            <div class="row g-3">
 
-    <label>Misyonumuz</label>
-    <input type="text" asp-for="Mission" class="form-control" />
-    <br />
+                @* Vizyon & Misyon *@
+                <div class="col-md-6">
+                    <label asp-for="Vision" class="form-label">Vizyonumuz</label>
+                    <input asp-for="Vision" class="form-control" />
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.Vision)</span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Mission" class="form-label">Misyonumuz</label>
+                    <input asp-for="Mission" class="form-control" />
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.Mission)</span>
+                </div>
 
-    <label>Açıklama</label>
-    <input type="text" asp-for="Description1" class="form-control" />
-    <br />
+                @* Açıklamalar *@
+                <div class="col-md-6">
+                    <label asp-for="Description1" class="form-label">Açıklama 1</label>
+                    <input asp-for="Description1" class="form-control" />
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.Description1)</span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Description2" class="form-label">Açıklama 2</label>
+                    <input asp-for="Description2" class="form-control" />
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.Description2)</span>
+                </div>
 
-    <label>Açıklama 2</label>
-    <input type="text" asp-for="Description2" class="form-control" />
-    <br />
+                @* Diğer Bilgiler *@
+                <div class="col-md-6">
+                    <label asp-for="StartYear" class="form-label">Başlama Yılı</label>
+                    <input asp-for="StartYear" class="form-control" type="number" />
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.StartYear)</span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="ImageUrl1" class="form-label">Fotoğraf 1 URL</label>
+                    <input asp-for="ImageUrl1" class="form-control" />
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.ImageUrl1)</span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="ImageUrl2" class="form-label">Fotoğraf 2 URL</label>
+                    <input asp-for="ImageUrl2" class="form-control" />
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.ImageUrl2)</span>
+                </div>
 
-    <label>Başlama yılı</label>
-    <input type="number" asp-for="StartYear" class="form-control" />
-    <br />
+                @* İtemlar *@
+                <div class="col-md-6">
+                    <label asp-for="İtem1" class="form-label">İtem 1</label>
+                    <input asp-for="İtem1" class="form-control" />
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.İtem1)</span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="İtem2" class="form-label">İtem 2</label>
+                    <input asp-for="İtem2" class="form-control" />
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.İtem2)</span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="İtem3" class="form-label">İtem 3</label>
+                    <input asp-for="İtem3" class="form-control" />
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.İtem3)</span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="İtem4" class="form-label">İtem 4</label>
+                    <input asp-for="İtem4" class="form-control" />
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.İtem4)</span>
+                </div>
 
-    <label>Fotoğraf 1</label>
-    <input type="text" asp-for="ImageUrl1" class="form-control" />
-    <br />
+                @* Kişisel Bilgiler *@
+                <div class="col-md-6">
+                    <label asp-for="NameSurname" class="form-label">Ad Soyad</label>
+                    <input asp-for="NameSurname" class="form-control" />
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.NameSurname)</span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="JobTitle" class="form-label">Meslek</label>
+                    <input asp-for="JobTitle" class="form-control" />
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.JobTitle)</span>
+                </div>
+                <div class="col-md-12">
+                    <label asp-for="ProfilePicture" class="form-label">Profil Fotoğrafı URL</label>
+                    <input asp-for="ProfilePicture" class="form-control" />
+                    <span class="text-danger">@Html.ValidationMessageFor(m => m.ProfilePicture)</span>
+                </div>
 
-    <label>foto 2</label>
-    <input type="text" asp-for="ImageUrl2" class="form-control" />
-    <br />
-
-    <label>İtem 1</label>
-    <input type="text" asp-for="İtem1" class="form-control" />
-    <br />
-
-    <label>item 2 </label>
-    <input type="text" asp-for="İtem2" class="form-control" />
-    <br />
-
-    <label>item 3</label>
-    <input type="text" asp-for="İtem3" class="form-control" />
-    <br />
-
-    <label>item 4</label>
-    <input type="text" asp-for="İtem4"class="form-control" />
-    <br />
-
-    <label>Ad Soyad</label>
-    <input type="text" asp-for="NameSurname" class="form-control" />
-    <br />
-
-    <label>Meslek</label>
-    <input type="text" asp-for="JobTitle " class="form-control" />
-    <br />
-
-    <label>profil Fotoğrafı</label>
-    <input type="text" asp-for="ProfilePicture " class="form-control" />
-    <br />
-
-    <button class="btn btn-success">Kaydet</button>
-
-
-</form>
+                @* Kaydet Butonu *@
+                <div class="col-md-12 mt-3">
+                    <button type="submit" class="btn btn-success w-100">
+                        <i class="fa fa-save me-2"></i> Kaydet
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

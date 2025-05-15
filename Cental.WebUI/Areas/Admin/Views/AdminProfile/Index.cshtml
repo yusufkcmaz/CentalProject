@@ -5,44 +5,48 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<form method="post" enctype="multipart/form-data">
-    <div class="text-center"> 
-      <img src="@Model.ImageUrl" style="width:80px; height:100px;" alt="Profil Resmi" />
-      <input type="file" asp-for="ImageFile" accept="image/png , image/jpg , image/jpeg"  />
-      
+<div class="card shadow-sm mx-auto" style="max-width: 500px;">
+    <div class="card-header bg-dark text-white text-center">
+        <h4>Profil Güncelleme</h4>
     </div>
-    <input type="hidden" asp-for="ImageUrl"/>
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+            <div class="text-center mb-4">
+                <img src="@Model.ImageUrl" class="rounded" style="width:80px; height:100px; object-fit:cover;" alt="Profil Resmi" />
+                <input type="file" asp-for="ImageFile" accept="image/png,image/jpg,image/jpeg" class="form-control mt-2" />
+                <input type="hidden" asp-for="ImageUrl" />
+            </div>
 
+            <div class="mb-3">
+                <label asp-for="FirstName" class="form-label">Ad</label>
+                <input asp-for="FirstName" class="form-control" required />
+            </div>
 
+            <div class="mb-3">
+                <label asp-for="LastName" class="form-label">Soyad</label>
+                <input asp-for="LastName" class="form-control" required />
+            </div>
 
-    <label>Ad</label>
-    <input type="text" asp-for="FirstName" class="form-control" required />
-    <br />
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" type="email" class="form-control" required />
+            </div>
 
-    <label>Soyad</label>
-    <input type="text" asp-for="LastName" class="form-control" required />
-    <br />
+            <div class="mb-3">
+                <label asp-for="PhoneNumber" class="form-label">Telefon Numarası</label>
+                <input asp-for="PhoneNumber" class="form-control" required />
+            </div>
 
-    <label>Email</label>
-    <input type="email" asp-for="Email" class="form-control" required />
-    <br />
+            <div class="mb-3">
+                <label asp-for="CurrentPassword" class="form-label">Bilgileri Güncellemek için Şifrenizi Girin</label>
+                <input asp-for="CurrentPassword" type="password" class="form-control" required />
+            </div>
 
-    <label>Telefon Numarası</label>
-    <input type="text" asp-for="PhoneNumber" class="form-control" required />
-    <br />
+            <div class="text-danger mb-3">
+                @Html.ValidationSummary()
+            </div>
 
-    <label>Bilgileri Güncellemek için şifrenizi girin</label>
-    <input type="password" asp-for="CurrentPassword" class="form-control" required />
-    <br />
-       <p class="text-danger">
-        @Html.ValidationSummary()
-    </p>
-    <button class="btn btn-outline-danger">Güncelle</button>
-
-  
-
-
-
-
-</form>
-
+            <button type="submit" class="btn btn-outline-danger w-100">Güncelle</button>
+        </form>
+    </div>
+</div>

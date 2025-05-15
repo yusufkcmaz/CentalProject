@@ -4,69 +4,95 @@
     ViewData["Title"] = "Hakkımızda | Güncelleme Sayfası";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-@* 
-<h3>Hakkımızda Güncelleme Sayfası</h3> *@
 
-<form method="post">
-    <input  type="hidden" asp-for="AboutId"/>
-    <label>Vizyonumuz</label>
-    <input type="text" asp-for="Vision" class="form-control accordion-item" />
-    <br />
+<br />
+<div class="card shadow-sm mx-auto border-0" style="max-width: 900px;">
+    <div class="card-header bg-dark">
+        <h4 class="mb-0 text-white">Hakkımızda Bilgisi Güncelle</h4>
+    </div>
+    <div class="card-body bg-light">
 
-    <label>Misyonumuz</label>
-    <input type="text" asp-for="Mission" class="form-control" />
-    <br />
+        <form method="post">
+            <input type="hidden" asp-for="AboutId" />
 
-    <label>Açıklama</label>
-    <input type="text" asp-for="Description1" class="form-control" />
-    <br />
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label asp-for="Vision" class="form-label">Vizyonumuz</label>
+                    <input asp-for="Vision" class="form-control" />
+                </div>
 
-    <label>Açıklama 2</label>
-    <input type="text" asp-for="Description2" class="form-control" />
-    <br />
+                <div class="col-md-6">
+                    <label asp-for="Mission" class="form-label">Misyonumuz</label>
+                    <input asp-for="Mission" class="form-control" />
+                </div>
 
-    <label>Başlama yılı</label>
-    <input type="number" asp-for="StartYear" class="form-control" />
-    <br />
+                <div class="col-md-6">
+                    <label asp-for="Description1" class="form-label">Açıklama 1</label>
+                    <input asp-for="Description1" class="form-control" />
+                </div>
 
-    <label>Fotoğraf 1</label>
-    <input type="text" asp-for="ImageUrl1" class="form-control" />
-    <br />
+                <div class="col-md-6">
+                    <label asp-for="Description2" class="form-label">Açıklama 2</label>
+                    <input asp-for="Description2" class="form-control" />
+                </div>
 
-    <label>foto 2</label>
-    <input type="text" asp-for="ImageUrl2" class="form-control" />
-    <br />
+                <div class="col-md-6">
+                    <label asp-for="StartYear" class="form-label">Başlama Yılı</label>
+                    <input asp-for="StartYear" class="form-control" type="number" />
+                </div>
 
-    <label>İtem 1</label>
-    <input type="text" asp-for="İtem1" class="form-control" />
-    <br />
+                <div class="col-md-6">
+                    <label asp-for="ImageUrl1" class="form-label">Fotoğraf 1 URL</label>
+                    <input asp-for="ImageUrl1" class="form-control" />
+                </div>
 
-    <label>item 2 </label>
-    <input type="text" asp-for="İtem2" class="form-control" />
-    <br />
+                <div class="col-md-6">
+                    <label asp-for="ImageUrl2" class="form-label">Fotoğraf 2 URL</label>
+                    <input asp-for="ImageUrl2" class="form-control" />
+                </div>
 
-    <label>item 3</label>
-    <input type="text" asp-for="İtem3" class="form-control" />
-    <br />
+                <div class="col-md-6">
+                    <label asp-for="İtem1" class="form-label">İtem 1</label>
+                    <input asp-for="İtem1" class="form-control" />
+                </div>
 
-    <label>item 4</label>
-    <input type="text" asp-for="İtem4" class="form-control" />
-    <br />
+                <div class="col-md-6">
+                    <label asp-for="İtem2" class="form-label">İtem 2</label>
+                    <input asp-for="İtem2" class="form-control" />
+                </div>
 
-    <label>Ad Soyad</label>
-    <input type="text" asp-for="NameSurname" class="form-control" />
-    <br />
+                <div class="col-md-6">
+                    <label asp-for="İtem3" class="form-label">İtem 3</label>
+                    <input asp-for="İtem3" class="form-control" />
+                </div>
 
-    <label>Meslek</label>
-    <input type="text" asp-for="JobTitle " class="form-control" />
-    <br />
+                <div class="col-md-6">
+                    <label asp-for="İtem4" class="form-label">İtem 4</label>
+                    <input asp-for="İtem4" class="form-control" />
+                </div>
 
-    <label>profil Fotoğrafı</label>
-    <input type="text" asp-for="ProfilePicture " class="form-control" />
-    <br />
+                <div class="col-md-6">
+                    <label asp-for="NameSurname" class="form-label">Ad Soyad</label>
+                    <input asp-for="NameSurname" class="form-control" />
+                </div>
 
-    <button class="btn btn-success">Güncelle</button>
+                <div class="col-md-6">
+                    <label asp-for="JobTitle" class="form-label">Meslek</label>
+                    <input asp-for="JobTitle" class="form-control" />
+                </div>
 
+                <div class="col-md-12">
+                    <label asp-for="ProfilePicture" class="form-label">Profil Fotoğrafı URL</label>
+                    <input asp-for="ProfilePicture" class="form-control" />
+                </div>
 
-</form>
+                <div class="col-md-12 mt-4">
+                    <button type="submit" class="btn btn-dark w-100">
+                        <i class="fa fa-save me-2"></i> Güncellemeyi Kaydet
+                    </button>
+                </div>
+            </div>
+        </form>
 
+    </div>
+</div>

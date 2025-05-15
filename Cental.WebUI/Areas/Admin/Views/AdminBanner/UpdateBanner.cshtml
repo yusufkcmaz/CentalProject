@@ -1,24 +1,47 @@
 ﻿@using Cental.DtoLayer.BannerDtos
 @model UpdateBannerDto
 @{
-    ViewData["Title"] = "Banner güncelleme";
+    ViewData["Title"] = "Banner Güncelleme";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<form asp-action="UpdateBanner" method="post">
-    <input type="hidden" asp-for=BannerId />
 
-    <label>Açıklama</label>
-    <input type="text" asp-for="Title" class="form-control" />
-    <br />
+<div class="container mt-4">
+    <div class="card shadow-lg" style="max-width: 700px; margin: auto;">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0"><i class="fas fa-pen-nib me-2"></i>Banner Bilgisi Güncelle</h4>
+        </div>
 
-    <label>Açıklama</label>
-    <input type="text" asp-for="Description" class="form-control" />
-    <br />
+        <div class="card-body">
+            <form asp-action="UpdateBanner" method="post" novalidate>
+                <input type="hidden" asp-for="BannerId" />
 
-  
-    <label>Giriş Fotoğrafı</label>
-    <input type="text" asp-for="ImageUrl" class="form-control" />
-    <br />
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label fw-bold">Başlık</label>
+                    <input asp-for="Title" class="form-control" placeholder="Başlık giriniz..." />
+                </div>
 
-    <button class="btn btn-success">Güncelle</button>
-    </form>
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label fw-bold">Açıklama</label>
+                    <textarea asp-for="Description" class="form-control" rows="3" placeholder="Açıklama giriniz..."></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ImageUrl" class="form-label fw-bold">Görsel URL</label>
+                    <input asp-for="ImageUrl" class="form-control" placeholder="Resim bağlantısı giriniz..." />
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success fw-bold">
+                        <i class="fas fa-save me-2"></i>Güncellemeyi Kaydet
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card-footer text-center">
+            <a asp-action="Index" asp-controller="AdminBanner" class="btn btn-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Geri Dön
+            </a>
+        </div>
+    </div>
+</div>
