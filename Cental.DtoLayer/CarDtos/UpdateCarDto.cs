@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Cental.DtoLayer.CarDtos
-{
+{ 
     public class UpdateCarDto
     {
         public int CarId { get; set; }
@@ -20,8 +20,8 @@ namespace Cental.DtoLayer.CarDtos
         public string? Transmission { get; set; }
         public int KM { get; set; }
         public int CarBrandId { get; set; }
-        public virtual CarBrand Brand { get; set; } //navigation property
-        public virtual List<Review> Reviews { get; set; }
+        public string?  BrandName { get; set; } //navigation property
+        //public virtual List<Review> Reviews { get; set; }
 
     }
 }

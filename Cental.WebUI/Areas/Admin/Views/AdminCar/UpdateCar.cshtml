@@ -1,0 +1,78 @@
+﻿@using Cental.DtoLayer.CarDtos
+@model UpdateCarDto
+@{
+    ViewData["Title"] = "UpdateCar";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    ViewData["Title"] = "UpdateCar";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow-lg mt-4 mx-auto" style="max-width: 1000px;">
+    <div class="card-header bg-dark text-white">
+        <h4 class="mb-0"><i class="fa fa-car me-2"></i>Aracı Güncelle</h4>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            <input type="hidden" asp-for="CarId" />
+            <div class="row g-3">
+                <div class="col-lg-6">
+                    <label asp-for="ModelName" class="form-label fw-semibold">Araba Modeli</label>
+                    <input asp-for="ModelName" class="form-control" />
+
+                    <label asp-for="ImageUrl" class="form-label fw-semibold mt-3">Araba Resmi (URL)</label>
+                    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                    {
+                        <div class="mb-3">
+                            <img src="@Model.ImageUrl" alt="Araba Görseli" style="max-width: 100%; height: auto;" />
+                        </div>
+                    }
+
+                    <input asp-for="ImageUrl" class="form-control" />
+
+                    <label asp-for="Year" class="form-label fw-semibold mt-3">Araç Yılı</label>
+                    <input asp-for="Year" class="form-control" type="number" />
+
+                    <label asp-for="Price" class="form-label fw-semibold mt-3">Fiyat</label>
+                    <input asp-for="Price" class="form-control" />
+
+                    <label asp-for="SeatCount" class="form-label fw-semibold mt-3">Koltuk Sayısı</label>
+                    <input asp-for="SeatCount" class="form-control" type="number" />
+                </div>
+
+                <div class="col-lg-6">
+                    <label asp-for="Transmission" class="form-label fw-semibold">Özel Vites Çeşidi</label>
+                    <input asp-for="Transmission" class="form-control" />
+
+                    <label asp-for="KM" class="form-label fw-semibold mt-3">Araç Kilometresi</label>
+                    <input asp-for="KM" class="form-control" type="number" />
+
+                    <label asp-for="CarBrandId" class="form-label fw-semibold mt-3">Marka</label>
+                    <select asp-for="CarBrandId" asp-items="ViewBag.brands" class="form-select">
+                        <option value="">Markayı Seçiniz</option>
+                    </select>
+
+                    <label asp-for="GearType" class="form-label fw-semibold mt-3">Vites Tipi</label>
+                    <select asp-for="GearType" asp-items="ViewBag.GearTypes" class="form-select">
+                        <option value="">Vites Seçiniz</option>
+                    </select>
+
+                    <label asp-for="GasType" class="form-label fw-semibold mt-3">Yakıt Türü</label>
+                    <select asp-for="GasType" asp-items="ViewBag.GasTypes" class="form-select">
+                        <option value="">Yakıt Seçiniz</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success w-100 fw-bold">
+                    <i class="fa fa-save me-2"></i>Aracı Güncelle
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
