@@ -40,6 +40,8 @@ ASP.NET Core MVC
 
 🖼️ Proje Görselleri
 -
+![Ekran görüntüsü 2025-06-03 000350](https://github.com/user-attachments/assets/1d90daff-f1fd-493a-8a12-d41e1312c75f)
+
 ![Ekran görüntüsü 2025-06-02 234003](https://github.com/user-attachments/assets/b2504d2a-edcd-4b16-ab64-9e8a1efc7507)
 ![Ekran görüntüsü 2025-06-02 234102](https://github.com/user-attachments/assets/e12d1c1b-6c40-477a-a7e2-252a68d0eed3)
 ![Ekran görüntüsü 2025-06-02 234118](https://github.com/user-attachments/assets/1b1c14be-9b31-401a-82f8-793ffc724e67)
