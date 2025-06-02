@@ -9,13 +9,11 @@ namespace Cental.EntityLayer.Entities
     public class ContactInfo 
     {
         public int ContactInfoId { get; set; }
-        public string Adress { get; set; }
-        public string Mail { get; set; }
-        public int PhoneNumber { get; set; }
-        public int FaxsNumber { get; set; }
-        public int OfficePhoneNumber { get; set; }
-        public string OfficeAdress { get; set; }
-        public string Mapurl { get; set; }
+        public string? Adress { get; set; }
+        public string? Mail { get; set; }
+        public string? PhoneNumber { get; set; }
+        public string? FaxsNumber { get; set; }
+       
 
     }
 }

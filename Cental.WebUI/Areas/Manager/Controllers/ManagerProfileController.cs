@@ -11,59 +11,65 @@ namespace Cental.WebUI.Areas.Manager.Controllers
 {
     [Authorize(Roles = "Manager")]
     [Area("Manager")]
-    public class ManagerProfileController(UserManager<AppUser> _userManager , IImageService _imageService) : Controller
+    public class ManagerProfileController(UserManager<AppUser> _userManager, IImageService _imageService) : Controller
     {
-                
+
 
         public async Task<IActionResult> Index()
         {
-            var manager = await _userManager.FindByNameAsync(User.Identity.Name);
-            var profileEditDto = manager.Adapt<ProfileEditDto>();
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var profileEditDto = user.Adapt<ProfileEditDto>();
 
             return View(profileEditDto);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(ProfileEditDto dto)
+        public async Task<IActionResult> Index(ProfileEditDto model)
         {
-            var manager = await _userManager.FindByNameAsync(User.Identity.Name);
-
-            if (manager == null) return NotFound();
-
-            manager.FirstName = dto.FirstName;
-            manager.LastName = dto.LastName;
-            manager.Email = dto.Email;
-            manager.PhoneNumber = dto.PhoneNumber;
-            manager.ImageUrl = dto.ImageUrl;
-
-            var imageUrl = await _imageService.SaveImageAsync(dto.ImageFile);
-            manager.ImageUrl = imageUrl;
-
-            // Parola güncellenecekse
-            if (!string.IsNullOrEmpty(dto.CurrentPassword))
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var succeed = await _userManager.CheckPasswordAsync(user, model.CurrentPassword);
+            if (succeed)
             {
-                manager.PasswordHash = _userManager.PasswordHasher.HashPassword(manager, dto.CurrentPassword);
-            }
+                if (model.ImageFile != null)
+                {
+                    try
+                    {
+                        model.ImageUrl = await _imageService.SaveImageAsync(model.ImageFile);
 
-            var result = await _userManager.UpdateAsync(manager);
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError(string.Empty, ex.Message);
+                    }
+                }
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.Email = model.Email;
+                user.PhoneNumber = model.PhoneNumber;
+                user.ImageUrl = model.ImageUrl;
 
-            if (result.Succeeded)
-            {
-                ViewBag.Message = "Profil başarıyla güncellendi.";
-            }
-            else
-            {
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "ManagerProfile");
+                }
+
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError("", error.Description);
+                    ModelState.AddModelError(string.Empty, error.Description);
+                    return View(model);
                 }
+
+                ModelState.AddModelError(string.Empty, "Girdiğinizşifre hatalı ,güncelleme yapılamadı");
+
+
             }
-
-            return View(dto);
+            return View(model);
         }
-
     }
+
 }
+
 
 
 

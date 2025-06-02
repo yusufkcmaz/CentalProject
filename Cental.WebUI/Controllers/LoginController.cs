@@ -35,7 +35,7 @@ namespace Cental.WebUI.Controllers
                 return Redirect(returnUrl);                     
             }
 
-
+            
             
             //Kullanıcı Rolüne göre bulma ve yönlendirme.
 

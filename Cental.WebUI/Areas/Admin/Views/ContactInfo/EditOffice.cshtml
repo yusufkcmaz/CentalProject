@@ -1,0 +1,35 @@
+﻿@model ContactOffice
+@{
+    ViewData["Title"] = "EditOffice";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using Cental.EntityLayer.Entities
+
+<form asp-action="EditOffice" method="post" class="row g-3">
+    <input type="hidden" asp-for="ContactOfficeId" />
+
+    <div class="col-md-6">
+        <label>Adres</label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+    <div class="col-md-6">
+        <label>Mail</label>
+        <input asp-for="OfficeAdress" class="form-control" />
+    </div>
+    <div class="col-md-6">
+        <label>Telefon</label>
+        <input asp-for="OfficePhoneNumber" class="form-control" />
+    </div>
+    <div class="col-md-6">
+        <label>Faks</label>
+        <input asp-for="Mapurl" class="form-control" />
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-success">Kaydet</button>
+        <a asp-action="Cındex" class="btn btn-secondary">Geri Dön</a>
+    </div>
+</form>
+
+

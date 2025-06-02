@@ -33,6 +33,7 @@ namespace Cental.DataAccessLayer.Context
         public DbSet<Booking> Bookings  { get; set; }    
         public DbSet<LayoutInfo> layouts  { get; set; }    
         public DbSet<ContactInfo> ContactInfos   { get; set; }    
+        public DbSet<ContactOffice> contactOffıces { get; set; }
 
 
 

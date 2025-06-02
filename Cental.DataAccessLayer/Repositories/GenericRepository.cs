@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Cental.DataAccessLayer.Repositories
 {
-    //GENERIC SINIF
+    
     public class GenericRepository<T> : IGenericDal<T> where T : class 
     {
         protected readonly CentalContext _context;

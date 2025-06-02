@@ -1,0 +1,41 @@
+﻿@using Cental.EntityLayer.Entities
+@model List<ContactInfo>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<a asp-action="CreateInfo" class="btn btn-primary mb-3">Yeni Ekle</a>
+<a asp-action="Cındex" class="btn btn-primary mb-3">Şube Düzenlemeye git</a>
+
+<h4>Sabit iletişim kısmı</h4>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Adres</th>
+            <th>Mail</th>
+            <th>Telefon</th>
+            <th>Faks</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ContactInfoId</td>
+                <td>@item.Adress</td>
+                <td>@item.Mail</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.FaxsNumber</td>
+               
+                <td>
+                    <a asp-action="UpdateInfo" asp-route-id="@item.ContactInfoId" class="btn btn-sm btn-warning">Düzenle</a>
+                    <a asp-action="Delete" asp-route-id="@item.ContactInfoId" class="btn btn-sm btn-danger" onclick="return confirm('Silmek istediğine emin misin?');">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

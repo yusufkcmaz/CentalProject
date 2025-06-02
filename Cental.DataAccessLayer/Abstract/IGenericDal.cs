@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cental.DataAccessLayer.Abstract
 {
-    //Her sınıf tüm entityler bu metodları kullanır 
     public interface IGenericDal<T> where T : class
-
     {
 
         List<T> GetAll();

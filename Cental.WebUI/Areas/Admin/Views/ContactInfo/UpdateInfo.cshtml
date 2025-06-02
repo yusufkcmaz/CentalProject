@@ -1,0 +1,34 @@
+﻿@using Cental.EntityLayer.Entities
+@model ContactInfo
+@{
+    ViewData["Title"] = "UpdateInfo";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="UpdateInfo" method="post" class="row g-3">
+    <input type="hidden" asp-for="ContactInfoId" />
+
+    <div class="col-md-6">
+        <label>Adres</label>
+        <input asp-for="Adress" class="form-control" />
+    </div>
+    <div class="col-md-6">
+        <label>Mail</label>
+        <input asp-for="Mail" class="form-control" />
+    </div>
+    <div class="col-md-6">
+        <label>Telefon</label>
+        <input asp-for="PhoneNumber" class="form-control" />
+    </div>
+    <div class="col-md-6">
+        <label>Faks</label>
+        <input asp-for="FaxsNumber" class="form-control" />
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-success">Kaydet</button>
+        <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+    </div>
+</form>
+
+

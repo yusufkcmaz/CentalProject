@@ -11,7 +11,7 @@
             <p class="mb-0"> Aşağıdaki Yönlendirmelerden bizimle iletilşime geçebilirsiniz </p>
         </div>
 
-        //
+        
         <div class="row g-5">
             
             @await Component.InvokeAsync("_ContactFourCard")
@@ -26,46 +26,8 @@
             </div>
 
 
-            <div class="col-12 col-xl-5 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="p-5 bg-light rounded">
-                    <div class="bg-white rounded p-4 mb-4">
-                        <h4 class="mb-3">1.Şube</h4>
-                        <div class="d-flex align-items-center flex-shrink-0 mb-3">
-                            <p class="mb-0 text-dark me-2">Adres:</p><i class="fas fa-map-marker-alt text-primary me-2"></i><p class="mb-0">Ankara/Çankaya</p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <p class="mb-0 text-dark me-2">Telephone:</p><i class="fa fa-phone-alt text-primary me-2"></i><p class="mb-0">05554443322</p>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded p-4 mb-4">
-                        <h4 class="mb-3">2.Şube</h4>
-                        <div class="d-flex align-items-center mb-3">
-                            <p class="mb-0 text-dark me-2">Adres:</p><i class="fas fa-map-marker-alt text-primary me-2"></i><p class="mb-0">İstanbul/Başakşehir</p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <p class="mb-0 text-dark me-2">Telephone:</p><i class="fa fa-phone-alt text-primary me-2"></i><p class="mb-0">05554443322</p>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded p-4 mb-0">
-                        <h4 class="mb-3">3.Şube</h4>
-                        <div class="d-flex align-items-center mb-3">
-                            <p class="mb-0 text-dark me-2">Adres:</p><i class="fas fa-map-marker-alt text-primary me-2"></i><p class="mb-0">İstanbul/Tuzla</p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <p class="mb-0 text-dark me-2">Telefon:</p><i class="fa fa-phone-alt text-primary me-2"></i><p class="mb-0">05554443322</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div class="rounded">
-                    <iframe class="rounded w-100"
-                            style="height: 400px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39144.3218503261!2d32.8403919011212!3d39.89957987323277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d345ad9f357261%3A0x4b01c691eefd6f1d!2zw4dhbmtheWEvQW5rYXJh!5e1!3m2!1str!2str!4v1747471820681!5m2!1str!2str"
-                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-
+            @await Component.InvokeAsync("_ContactOffice")
+           
 
         </div>
     </div>
