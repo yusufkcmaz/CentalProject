@@ -1,8 +1,11 @@
-"CentalProject"
+
+# 🚘 Araç Kiralama Web Uygulaması - CentalProject
 
 
-🚘 Araç Kiralama Web Uygulaması
--
+📽️ **Projeyi Anlattığım YouTube Videosunu İzleybilirsiniz**  
+👉 [YouTube'da İzle](https://youtu.be/WbEs87WH18s?si=m-Sy_SXrJdj6c-5S)
+
+
 📌 Proje Hakkında
 Bu proje, ASP.NET Core MVC teknolojisi kullanılarak geliştirilmiş bir araç kiralama web uygulamasıdır. Kullanıcılar, araçları listeleyebilir, rezervasyon yapabilir, kullanıcı girişi/kayıt işlemlerini gerçekleştirebilir ve admin paneli /Manager paneli üzerinden yönetim sağlayabilir.
 
